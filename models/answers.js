@@ -3,12 +3,16 @@ var cfg = require('../config');
 var async = require('async');
 
 var connection = mysql.createConnection(cfg.mysql);
-connection.connect(mysql,function(err){
-console.log(err);
-});
 
 function getanswers(param,cb)
 {
+	cfg.pool.getConnection(function(err,connection) {
+        if (err) {
+            connection.release();
+            res.json({"code": 100, "status": "Error in connection database"});
+            return;
+        }
+        console.log('connected as id ' + connection.threadId);
 	var query = "select content form answers which q_id = '"+(param.id)+"';";
 	connection.query(query,function(err,cb){
 		if(err){
@@ -24,6 +28,11 @@ function getanswers(param,cb)
 		}
 		cb(null,_.uniq(answers_list));
 	}
+});
+	connection.on('error', function (err) {
+            res.json({"code": 100, "status": "Error in connection database"});
+            return;
+        });
 });
 }
 
