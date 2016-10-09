@@ -29,9 +29,17 @@ crypto.pbkdf2(passwrd, 'Salt', 100, 30, function (err, key) {
             if (err) {
                 res.json({error: err});
             }
-            else{
-                console.log('ooh');
-                res.json({msg:'user logged in'});
+           else{
+                var token = jwt.sign(users, "SUYASH", {
+                    expiresInMinutes: 1440 // expires in 24 hours
+                });
+
+                // return the information including token as JSON
+                res.json({
+                    success: true,
+                    token: token
+                });
+                //console.log('a',User);
             }
         });
     });
