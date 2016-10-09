@@ -14,7 +14,8 @@ function storeuser(param,cb){
 	var query = "Insert into user values(?,?,?,?,?,?,?,?,?,?)";
    // console.log(param);
 	var passw = param.password;
-    var d,cl;
+    //var d,cl;
+   // var phone =Number(param.phone);
     //console.log(passw);
 	crypto.pbkdf2(passw, 'Salt', 100, 30, function (err, key) {
         if (err) {
@@ -27,7 +28,8 @@ function storeuser(param,cb){
         var clg="Select id from college where name = '" +(param.clg_name)+"';"
         //console.log(param.dept_name);
        // step(
-       async.parallel([
+       var phone =Number(param.phone);
+       async.waterfall([
             function(callback){
         connection.query(dept,function(err,rows){
             //try{
@@ -38,13 +40,13 @@ function storeuser(param,cb){
             }
             else{
                 console.log('query executed for dept');
-                d = rows[0].id;
-                console.log(d);
+                var d = rows[0].id;
+                callback(null,d);
         }
     });
     },
       
-      function(callback){  
+      function(d,callback){  
         connection.query(clg,function(err,rows) {
             if(err){
                 cb(err,null);
@@ -52,23 +54,38 @@ function storeuser(param,cb){
             }
             else{
                 console.log('query executed for clg');
-                cl=rows[0].id;
-                console.log(cl);
+                var cl=rows[0].id;
+                //console.log(cl);
+                callback(null,cl,d);
+        }
+    });
+    },
+
+    function(cl,d,callback)
+    {
+    var val=[0,d,cl,param.name,param.usn,param.email,passw,phone,param.type,0];
+        connection.query(query,val,function(err,rows){
+            if(err){
+                cb(err,null);
+                console.log(err);
+                return callback(err);
+            }
+            else
+            {
+                cb(rows[0]);
         }
     });
     }
-    //console.log(d);
-    //console.log(cl);
     ], 
     function(err)
     {
         console.log("yahan aaya");
-        if(err) return next(err);
+        if(err) return err;
         //else{
             //console.log("else ke andar aaya");
         });
        
-        var phone =Number(param.phone);
+        /*var phone =Number(param.phone);
         console.log(phone);
         //var dept_id=Number(d);
         //var clg_id =Number(cl);
@@ -84,7 +101,7 @@ function storeuser(param,cb){
         	{
         		cb(rows[0]);
        	}
-    });
+    });*/
     });
 }
 
