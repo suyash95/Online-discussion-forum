@@ -16,6 +16,7 @@ var config = require('./config');
 var signup =require('./routes/signup');
 var login =require('./routes/login');
 var answer = require('./routes/answer');
+var comments = require('./routes/comments');
 
 var app = express();
 
@@ -37,6 +38,7 @@ app.use('/users', users);
 app.use('/signup',signup);
 app.use('/login',login);
 app.use('/answer',answer);
+app.use('/comments',comments);
   
 app.use(function (req, res, next) {
 
