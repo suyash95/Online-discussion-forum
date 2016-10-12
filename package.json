@@ -18,6 +18,7 @@
     "jsonwebtoken": "^5.0.2",
     "express-jwt": "^3.0.1",
     "step":"^0.0.6 ",
-    "async":"^2.0.1"
+    "async":"^2.0.1",
+    "lodash": "^3.10.0"
   }
 }
