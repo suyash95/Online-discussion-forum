@@ -38,9 +38,9 @@ app.use('/', routes);
 app.use('/users', users);
 app.use('/signup',signup);
 app.use('/login',login);
-app.use('/answer',answer);
 app.use('/comments',comments);
 app.use('/question',question);
+app.use('/answer',answer);
   
 app.use(function (req, res, next) {
 

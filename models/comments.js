@@ -12,7 +12,7 @@ connection.connect(function(err){
 
 function fetchcomments(param,cb)
 {
-	var query = "select content from comments where ans_id ="+param+";"
+	var query = "select * from comments where ans_id ="+param+";"
 	connection.query(query,function(err,rows){
 		if(err)
 		{
@@ -24,7 +24,12 @@ function fetchcomments(param,cb)
 			comment= [];
 			i=0;
 			while(i<rows.length){
-				comment.push(rows[i].content);
+				var details={
+					ans_id : rows[i].ans_id,
+					u_id :rows[i].u_id,
+					content:rows[i].content
+				};
+				comment.push(details);
 				i++;
 			}
 			cb(null,_.uniq(comment));

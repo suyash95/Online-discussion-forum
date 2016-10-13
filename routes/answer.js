@@ -6,13 +6,14 @@ var mysql=require('mysql');
 
 router.get('/',function(req,res,next){
 	//console.log(req.headers);
+	console.log("Req",req);
 	var id = req.headers.id;
 	console.log(id);
 	//console.log(req.headers['x-access-token']);
 	//if((req.body && req.body.access_token) || (req.query && req.query.access_token) || req.headers['x-access-token'] ) {
 	answers.getanswers(id,function(err,answers){
 		if(err){
-			consol.log("error occur");
+			console.log("error occur");
 			res.json({error:err});
 		}
 		else {

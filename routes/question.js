@@ -2,6 +2,19 @@ var express = require('express');
 var router = express.Router();
 var questions = require('../models/questions');
 
+router.get('/',function(req,res,next)
+{
+	var tag_id=req.headers.tag_id;
+	questions.fetchquestions(tag_id,function(err,questions){
+		if(err)
+		{
+			console.log("error hai");
+			res.json({error:err});
+		}
+		else
+			res.json({QUESTION:questions});
+	});
+});
 
 router.post('/',function(req,res,next)
 {

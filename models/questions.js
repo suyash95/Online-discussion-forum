@@ -2,6 +2,7 @@ var mysql = require('mysql');
 var config = require('../config');
 var async = require('async');
 var cfg = require('../config');
+var _ = require('lodash');
 
 var connection = mysql.createConnection(cfg.mysql);
 
@@ -9,6 +10,36 @@ connection.connect(function(err){
 	if(err)
 		console.log(err);
 });
+
+
+function fetchquestions(param,cb)
+{
+	var query = "select * from questions where tag_id = "+param+";"
+	connection.query(query,function(err,rows){
+		if(err){
+			console.log(err);
+			cb(err,null);
+		}
+		else{
+			question_list = [];
+			i=0;
+			while(i<rows.length ){
+                var details={
+                    u_id:rows[i].u_id,
+                    tag_id:rows[i].tag_id,
+                    content:rows[i].content,
+                    upvote:rows[i].upvote,
+                    downvote:rows[i].downvote,
+                    col_id:rows[i].col_id
+                };
+				question_list.push(details);
+				i++;
+		}
+		cb(null,_.uniq(question_list));
+	}
+});
+}
+
 
 function storequestions(param,cb)
 {
@@ -93,5 +124,6 @@ function storequestions(param,cb)
 }
 
 module.exports={
-	storequestions :storequestions
+	storequestions :storequestions,
+	fetchquestions  :fetchquestions
 }

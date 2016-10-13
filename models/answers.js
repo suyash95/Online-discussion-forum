@@ -12,7 +12,7 @@ connection.connect(function(err){
 function getanswers(param,cb)
 {
 	console.log(param);
-	var query = "select content from answers where q_id = "+param+";"
+	var query = "select * from answers where q_id = "+param+";"
 	connection.query(query,function(err,rows){
 		if(err){
 			console.log(err);
@@ -22,7 +22,14 @@ function getanswers(param,cb)
 			answers_list = [];
 			i=0;
 			while(i<rows.length ){
-				answers_list.push(rows[i].content);
+                var details={
+                    q_id:rows[i].q_id,
+                    u_id:rows[i].u_id,
+                    content:rows[i].content,
+                    upvote:rows[i].upvote,
+                    downvote:rows[i].downvote
+                };
+				answers_list.push(details);
 				i++;
 		}
 		cb(null,_.uniq(answers_list));
