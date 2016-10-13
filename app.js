@@ -18,6 +18,7 @@ var login =require('./routes/login');
 var answer = require('./routes/answer');
 var comments = require('./routes/comments');
 var question = require('./routes/question');
+var tags = require('./routes/tags');
 
 var app = express();
 
@@ -41,6 +42,7 @@ app.use('/login',login);
 app.use('/comments',comments);
 app.use('/question',question);
 app.use('/answer',answer);
+app.use('/tags',tags);
   
 app.use(function (req, res, next) {
 

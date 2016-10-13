@@ -1,5 +1,5 @@
 var mysql = require('mysql');
-var config = require('../config');
+//var config = require('../config');
 var async = require('async');
 var cfg = require('../config');
 var _ = require('lodash');
@@ -25,6 +25,7 @@ function fetchquestions(param,cb)
 			i=0;
 			while(i<rows.length ){
                 var details={
+                	id :rows[i].id,
                     u_id:rows[i].u_id,
                     tag_id:rows[i].tag_id,
                     content:rows[i].content,
