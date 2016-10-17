@@ -3,6 +3,19 @@ var router =express.Router();
 var answers=require('../models/answers');
 var mysql=require('mysql');
 
+/**
+* @api {get} /answer/:q_id content request for all the answer of a question.
+ * @apiName answer
+ * @apiGroup answer
+ *
+ *@apiParam {number} q_id is required.
+ *
+ *@apiSuccess {number} q_id  question id.
+ *@apiSuccess {number} u_id user id .
+ *@apiSucess  {string} content get all answers the for a perticular q_id.
+ *@apiSuccess {number} upvote .
+ *@apiSuccess {number} downvote.
+*/
 
 router.get('/',function(req,res,next){
 	//console.log(req.headers);
@@ -22,6 +35,18 @@ router.get('/',function(req,res,next){
 	});
 
 });
+
+/**
+* @api {post} /answer/ post answersfor a question
+ * @apiName answer
+ * @apiGroup answer
+ *
+ *@apiParam {number} q_id is required
+ *@apiParam {number} u_id is required .
+ *@apiParam {string} [contents] is required
+ *
+ *@apiSuccess {string} answer succesfully posted.
+*/
 
 router.post('/',function(req,res,next){
 	var details ={

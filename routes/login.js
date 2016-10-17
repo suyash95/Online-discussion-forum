@@ -11,6 +11,16 @@ router.get('/',function(req,res,next){
 });
 
 
+/**
+* @api {post} /login/ user authentication
+ * @apiName login
+ * @apiGroup authentication
+ *
+ *@apiParam {string} [usn]  usn is required
+ *@apiParam {string} [password] password is required
+ *
+ *@apiSuccess {string} sucesss
+*/
 
 router.post('/',function(req , res ,next){
     //console.log(req);

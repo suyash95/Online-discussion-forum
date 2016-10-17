@@ -7,6 +7,24 @@ router.get('/', function(req, res, next) {
   console.log('signup pe aaya');
 });
 
+/**
+* @api {post} /signup/ user authentication
+ * @apiName signup
+ * @apiGroup registration
+ *
+ *@apiParam {string} [dept_name] dept_name is required.
+ *@apiParam {string} [clg_name] clg_name is required.
+ *@apiParam {string} [name] name is required.
+ *@apiParam {string} [usn] usn is required.
+ *@apiParam {string} [email] email is required.
+ *@apiParam {string} [password] password is required.
+ *@apiParam {integer} phone  phone is required.
+ *@apiParam {interger} type  type is required.
+ *
+ *
+ *@apiSuccess {string} user signed up
+*/
+
 router.post('/',function(req,res,next){
 	var userdetails= {
          dept_name:req.body.dept_name,

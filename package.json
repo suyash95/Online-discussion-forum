@@ -17,8 +17,16 @@
     "mysql": "^2.7.0",
     "jsonwebtoken": "^5.0.2",
     "express-jwt": "^3.0.1",
-    "step":"^0.0.6 ",
-    "async":"^2.0.1",
+    "step": "^0.0.6 ",
+    "async": "^2.0.1",
     "lodash": "^3.10.0"
+  },
+  "apidoc": {
+    "title": "Custom apiDoc browser title",
+    "url" : "https://api.github.com/v1"
+  },
+  "devDependencies": {
+    "grunt": "^1.0.1",
+    "grunt-apidoc": "^0.11.0"
   }
 }

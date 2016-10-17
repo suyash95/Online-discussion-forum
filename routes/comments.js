@@ -3,6 +3,18 @@ var router = express.Router();
 var comments = require('../models/comments');
 
 
+/**
+* @api {get} /comments/:id content request of comments for a perticulara ans.
+ * @apiName comments
+ * @apiGroup comment
+ *
+ *@apiParam {number} ans_id is required
+ *
+ *@apiSuccess {number} ans_id answer id.
+ *@apiSuccess {number} u_id user id .
+ *@apiSucess  {string}  content get all comments the for that perticular ansid.
+*/ 
+
 router.get('/',function(req,res,next){
 	var ans_id = req.headers.id;
 
@@ -16,6 +28,18 @@ router.get('/',function(req,res,next){
 			res.json({COMMENTS:comments});
 });
 });
+
+/**
+* @api {post} /comments/ post comments for an answer
+ * @apiName comments
+ * @apiGroup comment
+ *
+ *@apiParam {number} ans_id is required
+ *@apiParam {number} u_id is required .
+ *@apiParam {string} [contents] content is required
+ *
+ *@apiSuccess {string} user commented.
+*/
 
 router.post('/',function(req,res,next){
 	var details ={
