@@ -14,6 +14,8 @@ connection.connect(function(err){
 
 function fetchquestions(param,cb)
 {
+	//param = parseInt(param);
+	console.log(param);
 	var query = "select * from questions where tag_id = "+param+";"
 	connection.query(query,function(err,rows){
 		if(err){

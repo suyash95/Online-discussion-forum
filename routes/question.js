@@ -7,7 +7,7 @@ var questions = require('../models/questions');
  * @apiName question
  * @apiGroup question
  *
- *@apiParam {number} tag_id is required.
+ *@apiParam {string} tag_id is required.
  *
  *
  *@apiSuccess {number} u_id user id .
@@ -20,8 +20,9 @@ var questions = require('../models/questions');
 
 router.get('/',function(req,res,next)
 {
-	var tag_id=req.headers.tag_id;
-	questions.fetchquestions(tag_id,function(err,questions){
+	//var tag_id=req.headers.tag_id;
+	console.log(req);
+	questions.fetchquestions(req.query.tag_id,function(err,questions){
 		if(err)
 		{
 			console.log("error hai");

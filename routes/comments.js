@@ -8,7 +8,7 @@ var comments = require('../models/comments');
  * @apiName comments
  * @apiGroup comment
  *
- *@apiParam {number} ans_id is required
+ *@apiParam {string} ans_id is required
  *
  *@apiSuccess {number} ans_id answer id.
  *@apiSuccess {number} u_id user id .
@@ -16,9 +16,9 @@ var comments = require('../models/comments');
 */ 
 
 router.get('/',function(req,res,next){
-	var ans_id = req.headers.id;
+	//var ans_id = req.headers.id;
 
-	comments.fetchcomments(ans_id,function(err,comments){
+	comments.fetchcomments(req.query.ans_id,function(err,comments){
 		if(err)
 		{
 			console.log("error");
