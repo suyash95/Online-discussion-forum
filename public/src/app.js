@@ -4,7 +4,7 @@
     angular.module('miniRvce', ['ui.router', 'toaster', 'ngAnimate'/*,'scDateTime'*/])
         .config(function ($stateProvider, $urlRouterProvider, $httpProvider) {
 
-            $urlRouterProvider.otherwise('/user');
+            $urlRouterProvider.otherwise('/home');
 
             var dir = 'src/';
 
@@ -31,10 +31,15 @@
                     templateUrl: dir + 'user/account/account.tpl',
                     controller: 'AccountController as account'
                 })
-                /*.state('home',{
+                .state('home',{
                     url: '/home',
                     templateUrl: dir + 'home/home.tpl',
                     controller: 'HomeController as home'
+                })
+                /*.state('question',{
+                    url: '/question/:ques_id',
+                    templateUrl: dir + 'questions/questio.tpl'
+                    controller: 'QuestionController as question'
                 })*/
             ;
 
