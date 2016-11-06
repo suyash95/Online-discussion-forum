@@ -6,6 +6,9 @@
             return{
                 getQuestions : function() {
                     return $http.get('/question/?tag_id=1');
+                },
+                getTags: function() {
+                    return $http.get('/tags');
                 }
             };
         }]);

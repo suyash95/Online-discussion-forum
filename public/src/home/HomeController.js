@@ -5,7 +5,7 @@
         .controller('HomeController', function($state,$http, Home, $window, $stateParams,$rootScope){
 
             var self = this;
-
+            self.tagsList = [];
             self.queslist = [] ;
             Home.getQuestions()
                 .then(function(response){
@@ -15,11 +15,13 @@
                     console.log('error:',reason );
                 });
 
-            self.viewProd = function(pro_id){
-                console.log(pro_id);
-                $rootScope.curProdId = pro_id;
-                $state.go('products');
-            };
+            Home.getTags()
+                .then(function (response) {
+                    console.log(response);
+                    self.tagsList = response.data.TAGS;
+                }).catch(function(reason){
+                    console.log("Tag retrieval error: ",reason);
+                });
 
         });
 })();

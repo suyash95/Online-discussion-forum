@@ -13,12 +13,11 @@
     </div>
 
     <div class="col-xs-6 col-sm-3 sidebar-offcanvas" id="sidebar">
-        <h2>Choose category:</h2>
+        <h2>Choose tags:</h2>
         <u class="list-group">
 
-            <li ng-repeat="each in home.catList" ui-sref="category({catId: each.category_id})" class="list-group-item" value="{{each.category_id}}">{{each.name}}</li>
+            <li ng-repeat="each in home.tagsList"  class="list-group-item" value="{{each.id}}">{{each.name}}</li>
 
         </u>
     </div>
 </div>
-        </div>
