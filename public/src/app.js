@@ -36,11 +36,11 @@
                     templateUrl: dir + 'home/home.tpl',
                     controller: 'HomeController as home'
                 })
-                /*.state('question',{
+                .state('question',{
                     url: '/question/:ques_id',
-                    templateUrl: dir + 'questions/questio.tpl'
+                    templateUrl: dir + 'questions/question.tpl',
                     controller: 'QuestionController as question'
-                })*/
+                })
             ;
 
             /*$httpProvider.interceptors.push('authInterceptor');*/
