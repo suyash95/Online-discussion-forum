@@ -4,7 +4,7 @@
     angular.module('miniRvce', ['ui.router', 'toaster', 'ngAnimate'/*,'scDateTime'*/])
         .config(function ($stateProvider, $urlRouterProvider, $httpProvider) {
 
-            $urlRouterProvider.otherwise('/home');
+            $urlRouterProvider.otherwise('/user');
 
             var dir = 'src/';
 
@@ -31,13 +31,13 @@
                     templateUrl: dir + 'user/account/account.tpl',
                     controller: 'AccountController as account'
                 })
-                .state('home',{
+                /*.state('home',{
                     url: '/home',
                     templateUrl: dir + 'home/home.tpl',
                     controller: 'HomeController as home'
-                })
+                })*/
             ;
 
-            $httpProvider.interceptors.push('authInterceptor');
+            /*$httpProvider.interceptors.push('authInterceptor');*/
         });
 })();

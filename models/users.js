@@ -12,7 +12,7 @@ connection.connect(function(err){
 function storeuser(param,cb){
     console.log('datastorage is initiated');
 	var query = "Insert into user values(?,?,?,?,?,?,?,?,?,?)";
-    //console.log(param);
+    //console.log("param: ", param);
 	var passw = param.password;
     //var d,cl;
    // var phone =Number(param.phone);
