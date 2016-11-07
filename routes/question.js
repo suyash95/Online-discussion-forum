@@ -70,6 +70,23 @@ router.get('/all',function(req,res,next){
 	});
 });
 
+router.post('/editquestion',function(req,res,next){
+	var details = {
+		q_id:req.body.q_id,
+		u_id:req.body.u_id,
+		contents:req.body.contents
+	};
+	questions.edit(details,function(err,questions){
+		if(err){
+			console.log("error hai");
+			res.json({error:err});
+		}
+		else
+			res.json({msg:"question edited"});
+	 
+	});
+});
+
 router.post('/',function(req,res,next)
 {
 	var details ={

@@ -103,6 +103,20 @@ function fetch(cb)
 });
 }
 
+function edit(param,cb)
+{
+	var query = "UPDATE questions SET content = '"+param.contents+"' where id='"+(param.u_id)+"' && u_id='"+(param.u_id)+"';"
+	connection.query(query,function(err,rows){
+		if(err)
+		{
+			console.log("error");
+			console.log(err);
+			cb(err,null);
+		}
+		else
+			cb(rows[0]);
+	}); 
+}
 
 function storequestions(param,cb)
 {
@@ -190,5 +204,6 @@ module.exports={
 	storequestions :storequestions,
 	fetchquestions  :fetchquestions,
 	fetch : fetch,
-	fetchbyqid:fetchbyqid
+	fetchbyqid:fetchbyqid,
+	edit:edit
 }
