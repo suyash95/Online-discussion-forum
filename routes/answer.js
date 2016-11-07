@@ -67,4 +67,23 @@ router.post('/',function(req,res,next){
 	});
 });
 
+
+router.post('/editanswer',function(req,res,next){
+	var details ={
+		ans_id:req.body.ans_id,
+		q_id:req.body.q_id,
+		u_id:req.body.u_id,
+		contents:req.body.contents
+	};
+answers.editanswers(details,function(err,answers){
+		if(err){
+			console.log("error hai");
+			res.json({error:err});
+		}
+		else
+			res.json({msg:"answer edited"});
+	 
+	});
+});
+
 module.exports=router

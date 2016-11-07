@@ -105,7 +105,7 @@ function fetch(cb)
 
 function edit(param,cb)
 {
-	var query = "UPDATE questions SET content = '"+param.contents+"' where id='"+(param.u_id)+"' && u_id='"+(param.u_id)+"';"
+	var query = "UPDATE questions SET content = '"+param.contents+"' where id='"+(param.q_id)+"' && u_id='"+(param.u_id)+"';"
 	connection.query(query,function(err,rows){
 		if(err)
 		{

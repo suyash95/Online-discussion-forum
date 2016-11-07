@@ -98,7 +98,24 @@ function addanswers(param,cb)
             //console.log("else ke andar aaya");
         });
 }
+
+function editanswers(param,cb)
+{
+    var query = "UPDATE answers SET content = '"+param.contents+"' where id='"+(param.ans_id)+"' && q_id='"+(param.q_id)+"'&& u_id='"+(param.u_id)+"';"
+    connection.query(query,function(err,rows){
+        if(err)
+        {
+            console.log("error");
+            console.log(err);
+            cb(err,null);
+        }
+        else
+            cb(rows[0]);
+    }); 
+}
+
 module.exports={
 	getanswers : getanswers,
-	addanswers : addanswers
+	addanswers : addanswers,
+    editanswers :editanswers
 }
