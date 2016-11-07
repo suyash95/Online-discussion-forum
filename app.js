@@ -43,6 +43,7 @@ app.use('/comments',comments);
 app.use('/question',question);
 app.use('/answer',answer);
 app.use('/tags',tags);
+app.use('./users',users);
   
 app.use(function (req, res, next) {
 

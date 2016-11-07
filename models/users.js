@@ -3,6 +3,7 @@ var mysql= require('mysql');
 var crypto =require('crypto');
 var step = require('step');
 var async =require('async');
+var _ = require('lodash');
 
 var connection =mysql.createConnection(cfg.mysql);
 connection.connect(function(err){
@@ -123,6 +124,34 @@ function fetchUser(usrname, passwrd, cb) {
 
 }
 
+function listuser(cb)
+{
+    var query= "Select * from user ";
+    connection.query(query,function(err,rows){
+        if(err){
+            console.log(err);
+            cb(err,null);
+        }
+        else{
+            user_list = [];
+            i=0;
+            while(i<rows.length ){
+                var userdetails={
+                    id :rows[i].id,
+                    dept_id:rows[i].dept_id,
+                    col_id :rows[i].col_id,
+                    name :rows[i].name,
+                    usn:rows[i].usn,
+                    email:rows[i].email
+                }
+                user_list.push(userdetails);
+                i++;
+            }
+           cb(null,_.uniq(user_list)); 
+           }           
+});
+}
+
 function insToken(token, cb) {
     var query = "Update user set token = ?";
 
@@ -140,6 +169,7 @@ function insToken(token, cb) {
 
 module.exports ={
 	putUser : storeuser,
-    getUser: fetchUser 
+    getUser: fetchUser ,
+    listuser:listuser
 
 }

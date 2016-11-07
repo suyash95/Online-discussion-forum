@@ -3,9 +3,9 @@ var router = express.Router();
 var users = require('../models/users');
 /* GET users listing. */
 
-router.get('/', function(req, res, next) {
+/*router.get('/', function(req, res, next) {
   console.log('signup pe aaya');
-});
+});*/
 
 /**
 * @api {post} /signup/ user authentication
