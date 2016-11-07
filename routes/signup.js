@@ -3,9 +3,17 @@ var router = express.Router();
 var users = require('../models/users');
 /* GET users listing. */
 
+<<<<<<< HEAD
 /*router.get('/', function(req, res, next) {
   console.log('signup pe aaya');
 });*/
+=======
+/*
+router.get('/', function(req, res, next) {
+  console.log('signup pe aaya');
+});
+*/
+>>>>>>> c785294659770afdad21e0773841e37e8431e932
 
 /**
 * @api {post} /signup/ user authentication

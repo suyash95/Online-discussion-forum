@@ -13,14 +13,14 @@ connection.connect(function(err){
 function storeuser(param,cb){
     console.log('datastorage is initiated');
 	var query = "Insert into user values(?,?,?,?,?,?,?,?,?,?)";
-    //console.log(param);
+    //console.log("param: ", param);
 	var passw = param.password;
     //var d,cl;
    // var phone =Number(param.phone);
     //console.log(passw);
 	crypto.pbkdf2(passw, 'Salt', 100, 30, function (err, key) {
         if (err) {
-            //console.log(err); 
+            console.log("password error: ",err); 
             next(err);
         }
         passw = key.toString('hex');
@@ -46,8 +46,8 @@ function storeuser(param,cb){
         }
     });
     },
-      
-      function(d,callback){  
+
+      function(d,callback){
         connection.query(clg,function(err,rows) {
             if(err){
                 cb(err,null);
@@ -77,7 +77,7 @@ function storeuser(param,cb){
         }
     });
     }
-    ], 
+    ],
     function(err)
     {
         console.log("yahan aaya");
@@ -85,7 +85,7 @@ function storeuser(param,cb){
         //else{
             //console.log("else ke andar aaya");
         });
-       
+
         /*var phone =Number(param.phone);
         console.log(phone);
         //var dept_id=Number(d);
@@ -169,7 +169,11 @@ function insToken(token, cb) {
 
 module.exports ={
 	putUser : storeuser,
+<<<<<<< HEAD
     getUser: fetchUser ,
     listuser:listuser
+=======
+    getUser: fetchUser
+>>>>>>> c785294659770afdad21e0773841e37e8431e932
 
 }

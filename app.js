@@ -25,7 +25,7 @@ var app = express();
 app.set('superSecret',cfg.secret)
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
-app.set('view engine', 'jade');
+app.set('view engine', 'ejs');
 
 // uncomment after placing your favicon in /public
 //app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
@@ -43,8 +43,12 @@ app.use('/comments',comments);
 app.use('/question',question);
 app.use('/answer',answer);
 app.use('/tags',tags);
+<<<<<<< HEAD
 app.use('./users',users);
   
+=======
+
+>>>>>>> c785294659770afdad21e0773841e37e8431e932
 app.use(function (req, res, next) {
 
     var token = req.body.token || req.query.token || req.headers['x-access-token'];
