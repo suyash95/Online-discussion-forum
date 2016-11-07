@@ -46,13 +46,38 @@ router.get('/',function(req,res,next)
  *@apiSuccess {string} questions posted successfully.
 */
 
+router.get('/qid',function(req,res,next){
+	questions.fetchbyqid(req.query.q_id,function(err,questions){
+		if(err)
+		{
+			console.log("error hai");
+			res.json({error:err});
+		}
+		else
+			res.json({QUESTION:questions});
+	});
+});
+
+router.get('/all',function(req,res,next){
+	questions.fetch(function(err,questions){
+		if(err)
+		{
+			console.log("error hai");
+			res.json({error:err});
+		}
+		else
+			res.json({QUESTION:questions});
+	});
+});
+
 router.post('/',function(req,res,next)
 {
 	var details ={
 		tag_id:req.body.tag_id,
 		u_id:req.body.u_id,
 		col_id:req.body.col_id,
-		contents : req.body.contents
+		contents : req.body.contents,
+		username : req.body.username
 	};
 
 	questions.storequestions(details,function(err,questions){

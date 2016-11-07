@@ -169,11 +169,11 @@ function insToken(token, cb) {
 
 module.exports ={
 	putUser : storeuser,
-<<<<<<< HEAD
+//<<<<<<< HEAD
     getUser: fetchUser ,
-    listuser:listuser
-=======
+    listuser:listuser,
+//=======
     getUser: fetchUser
->>>>>>> c785294659770afdad21e0773841e37e8431e932
+//>>>>>>> c785294659770afdad21e0773841e37e8431e932
 
 }

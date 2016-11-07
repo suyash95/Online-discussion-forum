@@ -33,7 +33,8 @@ function fetchquestions(param,cb)
                     content:rows[i].content,
                     upvote:rows[i].upvote,
                     downvote:rows[i].downvote,
-                    col_id:rows[i].col_id
+                    col_id:rows[i].col_id,
+                    username:rows[i].username
                 };
 				question_list.push(details);
 				i++;
@@ -43,11 +44,70 @@ function fetchquestions(param,cb)
 });
 }
 
+function fetchbyqid(param,cb)
+{
+	var query = "select * from questions where id ="+param+";"
+	connection.query(query,function(err,rows){
+		if(err){
+			console.log(err);
+			cb(err,null);
+		}
+		else
+		{
+			question_list =[];
+			var details ={
+				    id :rows[0].id,
+                    u_id:rows[0].u_id,
+                    tag_id:rows[0].tag_id,
+                    content:rows[0].content,
+                    upvote:rows[0].upvote,
+                    downvote:rows[0].downvote,
+                    col_id:rows[0].col_id,
+                    username:rows[0].username
+			};
+			question_list.push(details);
+		}
+		cb(null,_.uniq(question_list));
+});
+}
+
+
+function fetch(cb)
+{
+	var query = "select * from questions";
+	connection.query(query,function(err,rows){
+		if(err){
+			console.log(err);
+			cb(err,null);
+		}
+		else
+		{
+			question_list=[];
+			i=0;
+			while(i<rows.length){
+			var details ={
+				    id :rows[i].id,
+                    u_id:rows[i].u_id,
+                    tag_id:rows[i].tag_id,
+                    content:rows[i].content,
+                    upvote:rows[i].upvote,
+                    downvote:rows[i].downvote,
+                    col_id:rows[i].col_id,
+                    username:rows[i].username
+			};
+			question_list.push(details);
+			i++;
+		}
+			cb(null,_.uniq(question_list));
+		}
+});
+}
+
 
 function storequestions(param,cb)
 {
 	console.log(param);
-	var query = "Insert into questions values (?,?,?,?,?,?,?);"
+	var query = "Insert into questions values (?,?,?,?,?,?,?,?);"
 	var uid = "select id from user where id = '"+(param.u_id)+"';"
 	var tagid = "select id from tags where id = '"+(param.tag_id)+"';"
 	var colid = "select id from college where id = '" +(param.col_id)+"';"
@@ -104,7 +164,7 @@ function storequestions(param,cb)
 		},
 		function(col,u,tag,callback)
 		{
-			var values =[0,u,tag,param.contents,0,0,col];
+			var values =[0,u,tag,param.contents,0,0,col,param.username];
 			connection.query(query,values,function(err,rows){
 				if(err)
 				{
@@ -128,5 +188,7 @@ function storequestions(param,cb)
 
 module.exports={
 	storequestions :storequestions,
-	fetchquestions  :fetchquestions
+	fetchquestions  :fetchquestions,
+	fetch : fetch,
+	fetchbyqid:fetchbyqid
 }
