@@ -44,13 +44,9 @@ app.use('/comments',comments);
 app.use('/question',question);
 app.use('/answer',answer);
 app.use('/tags',tags);
-app.use('./admin',admin);
-//<<<<<<< HEAD
-app.use('./users',users);
-  
-//=======
+app.use('/admin',admin);
+//app.use('./users',users);
 
-//>>>>>>> c785294659770afdad21e0773841e37e8431e932
 app.use(function (req, res, next) {
 
     var token = req.body.token || req.query.token || req.headers['x-access-token'];

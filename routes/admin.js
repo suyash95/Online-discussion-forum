@@ -3,10 +3,7 @@ var router = express.Router();
 var admin = require('../models/admin');
 var crypto = require('crypto');
 var users = require('../models/users');
-
-router.get('/',function(req,res){
-	console.log("yehan hai");
-});
+var jwt = require('jsonwebtoken');
 
 router.get('/userdetails',function(req,res,next){
 users.listuser(function(err,users){
@@ -21,6 +18,19 @@ users.listuser(function(err,users){
 	});
 
 });
+
+router.post('/deleteuser',function(req,res,next){
+	admin.del(req.query.u_id,function(err,questions){
+		if(err)
+		{
+			console.log("error hai");
+			res.json({error:err});
+		}
+		else
+			res.json({msg:'user deleted'});
+	});
+});
+
 
 router.post('/signup',function(req,res,next){
 var details={
@@ -38,7 +48,7 @@ var details={
 			else
 			{
 				 res.json({
-              msg: "user signed up"
+              msg: "admin signed up"
 });
 			}
 	});
@@ -48,13 +58,13 @@ router.post('/login',function(req,res,next){
 	var email = req.body.email;
 	var password = req.body.password;
 
-	crypto.pbkdf2(passwrd, 'Salt', 100, 30, function (err, key) {
+	crypto.pbkdf2(password, 'Salt', 100, 30, function (err, key) {
         if (err) {
             //console.log(err); 
             next(err);
         }
         password = key.toString('hex');
-        console.log(passwrd);
+        console.log(password);
 
         admin.fetch(email,password,function(err ,admin){
         	if (err) {

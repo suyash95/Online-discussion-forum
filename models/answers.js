@@ -27,7 +27,8 @@ function getanswers(param,cb)
                     u_id:rows[i].u_id,
                     content:rows[i].content,
                     upvote:rows[i].upvote,
-                    downvote:rows[i].downvote
+                    downvote:rows[i].downvote,
+                    username : rows[i].username
                 };
 				answers_list.push(details);
 				i++;
@@ -40,7 +41,7 @@ function getanswers(param,cb)
 function addanswers(param,cb)
 {
 	console.log(param);
-	var query= "Insert into answers values (?,?,?,?,?,?)";
+	var query= "Insert into answers values (?,?,?,?,?,?,?)";
 
 	var uid = "select id from user where id = '"+(param.u_id)+"';"
 	var qid ="select id from questions where id = '"+(param.q_id)+"';"
@@ -75,7 +76,7 @@ function addanswers(param,cb)
     },
 
     function(q,u,callback){
-    	var value=[0,q,u,param.contents,0,0];
+    	var value=[0,q,u,param.contents,0,0,param.username];
     	connection.query(query,value,function(err,rows){
     		if(err)
     		{

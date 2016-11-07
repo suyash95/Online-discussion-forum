@@ -55,8 +55,89 @@ var query = "Select * from admin where email= ? and password = ?";
 
 }
 
+function del(param,cb)
+{
+	var query = "DELETE from user where id ="+param+";"
+	var query1 = "DELETE from questions where u_id = "+param+";"
+	var query2 = "DELETE from comments where u_id ="+param+";"
+	var query3 = "DELETE from answers where u_id="+param+";"
+
+	async.parallel([
+		function(callback)
+		{
+			connection.query(query1,function(err,rows){
+				if(err)
+				{
+					console.log("error");
+					cb(null,err);
+					return callback(err)
+				}
+				else{
+					console.log("query1 done");
+					//var tag= rows[0].id;
+					callback(null,query2);
+				}
+			});
+		},
+		function(callback)
+		{
+			connection.query(query2,function(err,rows){
+				if(err)
+				{
+					console.log("error");
+					cb(null,err);
+					return callback(err)
+				}
+				else{
+					console.log("query2 done");
+					//var u= rows[0].id;
+					callback(null,query3);
+				}
+			});
+		},
+		function(callback)
+		{
+			connection.query(query3,function(err,rows){
+				if(err)
+				{
+					console.log("error");
+					cb(null,err);
+					return callback(err)
+				}
+				else{
+					console.log("query3 done");
+					//var u= rows[0].id;
+					callback(null,query);
+				}
+			});
+		},
+		function(callback)
+		{
+			connection.query(query,function(err,rows){
+				if(err)
+				{
+					console.log("error");
+					cb(null,err);
+					return callback(err)
+				}
+				else{
+					console.log("query done");
+					//var u= rows[0].id;
+					cb(rows[0]);
+				}
+			});
+		}
+		],
+		function(err)
+		{
+			if(err)
+				return err;
+		});
+
+}
 
 module.exports = {
 	store :store,
-	fetch :fetch
+	fetch :fetch,
+	del :del
 }
