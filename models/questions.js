@@ -121,13 +121,15 @@ function edit(param,cb)
 function storequestions(param,cb)
 {
 	console.log(param);
-	var query = "Insert into questions values (?,?,?,?,?,?,?,?);"
+	var query = "Insert into questions values (?,?,?,?,?,?,?,?,?);";
+/*
 	var uid = "select id from user where id = '"+(param.u_id)+"';"
 	var tagid = "select id from tags where id = '"+(param.tag_id)+"';"
 	var colid = "select id from college where id = '" +(param.col_id)+"';"
+*/
 
 	async.waterfall([
-		function(callback)
+		/*function(callback)
 		{
 			connection.query(tagid,function(err,rows){
 				if(err)
@@ -175,10 +177,10 @@ function storequestions(param,cb)
 					callback(null,col,u,tag);
 				}
 			});
-		},
-		function(col,u,tag,callback)
+		},*/
+		function(callback)
 		{
-			var values =[0,u,tag,param.contents,0,0,col,param.username];
+			var values =[0,param.u_id,param.tag_id,param.contents,0,0,param.col_id,param.username,0];
 			connection.query(query,values,function(err,rows){
 				if(err)
 				{

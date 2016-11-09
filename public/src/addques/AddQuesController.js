@@ -12,6 +12,7 @@
 
             var ques_data = {};
             self.addQuestion = function () {
+                console.log("tag_id ",self.tag_id);
                 ques_data = {
                     tag_id: self.tag_id,
                     u_id: self.user,
