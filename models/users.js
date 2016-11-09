@@ -117,9 +117,24 @@ function fetchUser(usrname, passwrd, cb) {
                 cb("User not found", null);
             }
             else {
+                user_list= [];
+                var details = {
+                    id :rows[0].id,
+                    dept_id:rows[0].dept_id,
+                    col_id:rows[0].col_id,
+                    name:rows[0].name,
+                    usn:rows[0].usn,
+                    email:rows[0].email,
+                    phone:rows[0].phone,
+                    type:rows[0].type,
+                    verified:rows[0].verified
+                };
+                user_list.push(details);
+                
                 //console.log("frfrrifjr");
-                cb(null, rows[0]);
+                //cb(null, rows[0]);
             }
+            cb(null,_.uniq(user_list));
         });
 
 }
