@@ -120,64 +120,16 @@ function edit(param,cb)
 
 function storequestions(param,cb)
 {
-	console.log(param);
+	
 	var query = "Insert into questions values (?,?,?,?,?,?,?,?,?);";
-/*
-	var uid = "select id from user where id = '"+(param.u_id)+"';"
+	var query1 ="select assoc from tags where id = '"+param.tag_id+"';"
+	
+	/*var uid = "select id from user where id = '"+(param.u_id)+"';"
 	var tagid = "select id from tags where id = '"+(param.tag_id)+"';"
 	var colid = "select id from college where id = '" +(param.col_id)+"';"
 */
 
 	async.waterfall([
-		/*function(callback)
-		{
-			connection.query(tagid,function(err,rows){
-				if(err)
-				{
-					console.log("error");
-					cb(null,err);
-					return callback(err)
-				}
-				else{
-					console.log("tagid done");
-					var tag= rows[0].id;
-					callback(null,tag);
-				}
-			});
-		},
-		function(tag,callback)
-		{
-			connection.query(uid,function(err,rows){
-				if(err)
-				{
-					console.log("error");
-					cb(null,err);
-					return callback(err)
-				}
-				else{
-					console.log("uid done");
-					var u= rows[0].id;
-					callback(null,u,tag);
-				}
-			});
-		},
-
-		function(u,tag,callback)
-		{
-			connection.query(colid,function(err,rows){
-				if(err)
-				{
-					console.log("error");
-					cb(null,err);
-					return callback(err)
-				}
-				else{
-					console.log("colid done");
-					var col= rows[0].id;
-					callback(null,col,u,tag);
-				}
-			});
-		},*/
 		function(callback)
 		{
 			var values =[0,param.u_id,param.tag_id,param.contents,0,0,param.col_id,param.username,0];
@@ -190,10 +142,49 @@ function storequestions(param,cb)
 				}
 				else{
 					cb(rows[0]);
+					callback(null);
+				}
+			});
+		},
+		function(callback)
+		{
+			connection.query(query1,function(err,rows){
+				if(err)
+				{
+					console.log("error");
+					cb(null,err);
+					return callback(err)
+				}
+				else{
+					console.log("query1 done");
+					var a= rows[0].assoc;
+					console.log(a);
+					a =a+1;
+					callback(null,a);
+				}
+			});
+		},
+
+		function(a,callback)
+		{
+			var query2 = "update tags set assoc = '" + a + "' where id = '"+param.tag_id+"';"
+			connection.query(query2,function(err,rows){
+				if(err)
+				{
+					console.log("error");
+					cb(null,err);
+					return callback(err)
+				}
+				else{
+					console.log("updated done");
+					//var col= rows[0].id;
+					//callback(null);
 				}
 			});
 		}
-         ],
+
+		
+        ],
 		function(err)
 		{
 			if(err)

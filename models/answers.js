@@ -44,6 +44,7 @@ function addanswers(param,cb)
 	var query= "Insert into answers values (?,?,?,?,?,?,?)";
 
 	var uid = "select name from user where id = '"+(param.u_id)+"';"
+    var query1 = "update questions SET is_answrd =1 where id = '"+param.q_id+"';"
 
 	async.waterfall([
 		function(callback){
@@ -89,9 +90,28 @@ function addanswers(param,cb)
     		}
     		else
     			cb(rows[0]);
+            callback(null);
          
     	});
+    },
+    function(callback)
+    {
+        connection.query(query1,function(err,rows){
+            if(err)
+            {
+                console.log(err);
+                cb(err,null);
+                return callback(err);
+            }
+            else{
+                console.log('query1 is done');
+                cb(rows[0]);
+            //callback(null);
+        }
+         
+        });
     }
+
     ],
     function(err)
     {
