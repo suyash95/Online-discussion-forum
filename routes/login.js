@@ -47,7 +47,8 @@ crypto.pbkdf2(passwrd, 'Salt', 100, 30, function (err, key) {
                 // return the information including token as JSON
                 res.json({
                     success: true,
-                    token: token
+                    token: token,
+                    USER:users
                 });
                 //console.log('a',User);
             }
