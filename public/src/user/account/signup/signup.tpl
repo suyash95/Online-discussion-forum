@@ -16,7 +16,7 @@
   <label for="inputName" class="sr-only" >Your Name</label>
   <input data-ng-model="signup.name" type="text" id="inputName" class="form-control" placeholder="Name" required>
   <label for="inputEmail" class="sr-only">Email address</label>
-  <input data-ng-model="signup.email" type="text" id="inputEmail" class="form-control" placeholder="Email address" required >
+  <input data-ng-model="signup.email" type="text" id="inputEmail" class="form-control" placeholder="Email address" required ng-bind = "signup.chkusername()">
   <label for="inputPassword" class="sr-only">Password</label>
   <input data-ng-model="signup.password" type="password" id="inputPassword" class="form-control" placeholder="Password" required>
   <label for="inputPhone" class="sr-only" >Your Phone No.</label>
@@ -29,7 +29,7 @@
       <input type="checkbox" value="remember-me"> Remember me
     </label>
   </div>
-  <button ng-disabled="signup.enable" class="btn btn-lg btn-primary btn-block" type="submit">Sign Up</button>
+  <button ng-disabled="signup.enable" class="btn btn-lg btn-primary btn-block" type="submit"  >Sign Up</button>
 </form>
 
 </div>
