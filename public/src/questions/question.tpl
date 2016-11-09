@@ -16,10 +16,11 @@
                     {{ans.u_id}}</br>
                 </p>
             </div>
-            <label for="review" class="sr-only">Write review</label>
-            <input type="text" name="rating" class="form-control" ng-model = "product.Urating">
-            <input type="text" id="review" class="form-control" placeholder="review" ng-model="product.Ureview">
-            <button class="btn btn-lg btn-primary btn-block" type="submit" ng-click="product.addReview()">Submit review</button>
         </div>
     </div>
+<div>
+    <label for="answer" class="sr-only">Write answer</label>
+    <input type="text" name="answer" class="form-control" ng-model = "question.new_answer">
+    <button class="btn btn-lg btn-primary btn-block" type="submit" ng-click="question.addAnswer()">Submit answer</button>
 </div>
+        </div>

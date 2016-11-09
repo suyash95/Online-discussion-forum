@@ -40,10 +40,10 @@ function getanswers(param,cb)
 
 function addanswers(param,cb)
 {
-	console.log(param);
+	console.log(param.u_id);
 	var query= "Insert into answers values (?,?,?,?,?,?,?)";
 
-	var uid = "select id from user where id = '"+(param.u_id)+"';"
+	var uid = "select name from user where id = '"+(param.u_id)+"';"
 	var qid ="select id from questions where id = '"+(param.q_id)+"';"
 	async.waterfall([
 		function(callback){
@@ -55,7 +55,7 @@ function addanswers(param,cb)
             }
             else{
                 console.log('query executed for uid');
-                var u = rows[0].id;
+                var u = rows[0].name;
                 callback(null,u);
         }
     });
@@ -76,7 +76,8 @@ function addanswers(param,cb)
     },
 
     function(q,u,callback){
-    	var value=[0,q,u,param.contents,0,0,param.username];
+        console.log("\n\n\n\n",u);
+    	var value=[0,q,param.u_id,param.contents,0,0,u];
     	connection.query(query,value,function(err,rows){
     		if(err)
     		{

@@ -15,6 +15,7 @@
 
 			function login (data) {
                 var self = this;
+				id = data.usn;
 				return $http.post('/login', data)
 						.then(function (response) {
 							console.log(response);
@@ -22,7 +23,7 @@
 							token = response.data.token;
 							/*id = response.data.id;*/
 							$window.localStorage.setItem('token' , token);
-							/*$window.localStorage.setItem('user_id' , id);*/
+							$window.localStorage.setItem('user_id' , id);
                             console.log('isLoggedin', self.isLoggedIn);
 							return response;
 						}).catch(function(reason){
@@ -41,7 +42,7 @@
                     return true;
                 }
 				else {
-                    console.log('no logged in');
+                    console.log('not logged in');
                     isLoggedIn = false;
                     return false;
                 }
