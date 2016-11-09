@@ -41,11 +41,11 @@ function storecomments(param,cb)
 {
 	console.log(param);
 	var query = "Insert into comments values(?,?,?,?)";
-	var uid = "select id from user where id = '"+(param.u_id)+"';"
-	var ansid = "select id from answers where id = '"+(param.ans_id)+"';"
+	/*var uid = "select id from user where id = '"+(param.u_id)+"';"
+	var ansid = "select id from answers where id = '"+(param.ans_id)+"';"*/
 
 	async.waterfall([
-		function(callback)
+		/*function(callback)
 		{
 			connection.query(ansid,function(err,rows){
 				if(err)
@@ -76,11 +76,11 @@ function storecomments(param,cb)
 					callback(null,u,ans);
 				}
 			});
-		},
+		},*/
 
 		function(u,ans,callback)
 		{
-			var value=[0,ans,u,param.contents];
+			var value=[0,param.ans_id,param.u_id,param.contents];
 			connection.query(query,value,function(err,rows){
 				if(err)
 				{
