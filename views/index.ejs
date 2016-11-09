@@ -55,7 +55,17 @@
         <ui-view></ui-view>
         </div>
     </div>
-  <!--<script type="text/javascript" src="/dist/app.js"></script>-->
+    <div ng-controller = "TagController as tag">
+        <h2>Choose tags:</h2>
+        <u class="list-group">
+
+            <li ng-repeat="each in tag.tagsList"  class="list-group-item" value="{{each.id}}" ui-sref = "">{{each.name}} ---  {{each.assoc}}</li>
+
+
+        </u>
+    </div>
+
+    <!--<script type="text/javascript" src="/dist/app.js"></script>-->
 
     <script type="text/javascript" src="/src/app.js"></script>
     <script type="text/javascript" src="/src/user/account/AccountFactory.js"></script>
@@ -66,6 +76,8 @@
     <script type="text/javascript" src="/src/home/HomeController.js"></script>
     <script type="text/javascript" src="/src/questions/QuestionFactory.js"></script>
     <script type="text/javascript" src="/src/questions/QuestionController.js"></script>
+    <script type="text/javascript" src="/src/tag/TagFactory.js"></script>
+    <script type="text/javascript" src="/src/tag/TagController.js"></script>
    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <!-- Latest compiled and minified CSS -->
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">

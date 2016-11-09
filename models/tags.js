@@ -23,7 +23,8 @@ function fetchtags(cb)
 			while(i<rows.length ){
                 var details={
                     id:rows[i].id,
-                    name:rows[i].name
+                    name:rows[i].name,
+					assoc:rows[i].assoc
                 };
 				tag_list.push(details);
 				i++;

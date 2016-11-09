@@ -13,11 +13,6 @@
     </div>
 
     <div class="col-xs-6 col-sm-3 sidebar-offcanvas" id="sidebar">
-        <h2>Choose tags:</h2>
-        <u class="list-group">
 
-            <li ng-repeat="each in home.tagsList"  class="list-group-item" value="{{each.id}}">{{each.name}}</li>
-
-        </u>
     </div>
 </div>

@@ -9,7 +9,7 @@
             self.queslist = [] ;
             Home.getQuestions()
                 .then(function(response){
-                    console.log(response);
+                    //console.log(response);
                     self.queslist = response.data.QUESTION;
                 }).catch(function(reason){
                     console.log('error:',reason );
@@ -17,7 +17,7 @@
 
             Home.getTags()
                 .then(function (response) {
-                    console.log(response);
+                    //console.log(response);
                     self.tagsList = response.data.TAGS;
                 }).catch(function(reason){
                     console.log("Tag retrieval error: ",reason);
