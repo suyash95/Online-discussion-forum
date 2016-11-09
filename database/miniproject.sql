@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 09, 2016 at 10:45 AM
+-- Generation Time: Nov 09, 2016 at 12:05 PM
 -- Server version: 5.6.25
 -- PHP Version: 5.6.11
 
@@ -56,14 +56,15 @@ CREATE TABLE IF NOT EXISTS `answers` (
   `upvote` int(6) NOT NULL DEFAULT '0',
   `downvote` int(6) NOT NULL DEFAULT '0',
   `username` varchar(100) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `answers`
 --
 
 INSERT INTO `answers` (`id`, `q_id`, `u_id`, `content`, `upvote`, `downvote`, `username`) VALUES
-(2, 1, 1, 'hey !!!! its working', 0, 0, '');
+(2, 1, 1, 'hey !!!! its working', 0, 0, ''),
+(3, 2, 7, 'a', 0, 0, 'suyash');
 
 -- --------------------------------------------------------
 
@@ -193,6 +194,18 @@ INSERT INTO `user` (`id`, `dept_id`, `col_id`, `name`, `usn`, `email`, `password
 (15, 1, 1, 'suyash', '100', 'raan@gmail.com', 'a85ce36495072b8c9f50170cb7eb0ab7ab49a949436b92222d9af1967c14', 1234, 0, 0),
 (16, 1, 1, 'suyash', '144', 'raan@gmail.com', 'a85ce36495072b8c9f50170cb7eb0ab7ab49a949436b92222d9af1967c14', 1234, 0, 0);
 
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `user_answered`
+--
+
+CREATE TABLE IF NOT EXISTS `user_answered` (
+  `q_id` int(6) NOT NULL,
+  `u_id` int(6) NOT NULL,
+  `answered` int(1) NOT NULL DEFAULT '0'
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
 --
 -- Indexes for dumped tables
 --
@@ -258,6 +271,13 @@ ALTER TABLE `user`
   ADD KEY `college.id` (`col_id`);
 
 --
+-- Indexes for table `user_answered`
+--
+ALTER TABLE `user_answered`
+  ADD KEY `q_id` (`q_id`),
+  ADD KEY `u_id` (`u_id`);
+
+--
 -- AUTO_INCREMENT for dumped tables
 --
 
@@ -270,7 +290,7 @@ ALTER TABLE `admin`
 -- AUTO_INCREMENT for table `answers`
 --
 ALTER TABLE `answers`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=4;
 --
 -- AUTO_INCREMENT for table `college`
 --
@@ -339,6 +359,13 @@ ALTER TABLE `questions`
 ALTER TABLE `user`
   ADD CONSTRAINT `user_ibfk_1` FOREIGN KEY (`dept_id`) REFERENCES `dept` (`id`) ON UPDATE CASCADE,
   ADD CONSTRAINT `user_ibfk_2` FOREIGN KEY (`col_id`) REFERENCES `college` (`id`) ON UPDATE CASCADE;
+
+--
+-- Constraints for table `user_answered`
+--
+ALTER TABLE `user_answered`
+  ADD CONSTRAINT `user_answered_ibfk_1` FOREIGN KEY (`q_id`) REFERENCES `questions` (`id`),
+  ADD CONSTRAINT `user_answered_ibfk_2` FOREIGN KEY (`u_id`) REFERENCES `user` (`id`);
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
