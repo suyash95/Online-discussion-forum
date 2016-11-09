@@ -44,9 +44,11 @@ function addanswers(param,cb)
 	var query= "Insert into answers values (?,?,?,?,?,?,?)";
 
 	var uid = "select name from user where id = '"+(param.u_id)+"';"
-    var query1 = "update questions SET is_answrd =1 where id = '"+param.q_id+"';"
+    var query1 = "update questions SET is_answrd = 1 where id = '"+param.q_id+"';"
+    var query2 = "Insert into user_answered values (?,?,?)";
 
 	async.waterfall([
+    
 		function(callback){
 			connection.query(uid,function(err,rows){
                if(err){
@@ -61,22 +63,6 @@ function addanswers(param,cb)
         }
     });
     },
-/*
-    function(u,callback){
-    	connection.query(qid,function(err,rows){
-    		if(err){
-                console.log(err);
-                cb(err,null);
-                return callback(err);
-            }
-            else{
-                console.log('query executed for qid');
-                var q = rows[0].id;
-                callback(null,q,u);
-        }
-    });
-    },
-*/
 
     function(u,callback){
         console.log("\n\n\n\n",u);
@@ -90,10 +76,11 @@ function addanswers(param,cb)
     		}
     		else
     			cb(rows[0]);
-            callback(null);
-         
+             callback(null);
+            
     	});
     },
+
     function(callback)
     {
         connection.query(query1,function(err,rows){
@@ -105,14 +92,32 @@ function addanswers(param,cb)
             }
             else{
                 console.log('query1 is done');
-                cb(rows[0]);
-            //callback(null);
+                //cb(rows[0]);
+                callback(null,query2);
+        } 
+         
+        });
+    },
+    function(callback)
+    {
+        console.log('yahan aaya');
+        var value = [param.q_id,param.u_id,1];
+        connection.query(query2,value,function(err,rows){
+            if(err)
+            {
+                console.log(err);
+                cb(err,null);
+                return callback(err);
+            }
+            else{
+                console.log('query2 is done');
+                //cb(rows[0]);
+             //callback(null);
         }
          
         });
     }
-
-    ],
+],
     function(err)
     {
         console.log("yahan aaya");
