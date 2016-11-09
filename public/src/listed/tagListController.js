@@ -8,7 +8,8 @@
 
             self.queslist = [] ;
             self.t_id = $stateParams.tag_id;
-            tagList.getQuestions()
+            //console.log('tag i:', self.t_id);
+            tagList.getQuestions(self.t_id)
                 .then(function(response){
                     //console.log(response);
                     self.queslist = response.data.QUESTION;
