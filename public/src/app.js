@@ -46,6 +46,11 @@
                     templateUrl: dir + 'listed/tagList.tpl',
                     controller: 'tagListController as listed'
                 })
+                .state('addques',{
+                    url: '/addques',
+                    templateUrl: dir + 'addques/addques.tpl',
+                    controller: 'AddQuesController as addques'
+                })
             ;
 
             /*$httpProvider.interceptors.push('authInterceptor');*/

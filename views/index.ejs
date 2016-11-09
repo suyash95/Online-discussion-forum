@@ -44,6 +44,11 @@
                 <font color="white">Logout</font>
               </a>
             </li>
+              <li ng-if="loggedIn">
+                  <a  ui-sref-active="ak-active-tab" ui-sref="addques">
+                      <font color="white">Add Question</font>
+                  </a>
+              </li>
 
           </ul>
         </div>
@@ -80,6 +85,9 @@
     <script type="text/javascript" src="/src/tag/TagController.js"></script>
     <script type="text/javascript" src="/src/listed/tagListFactory.js"></script>
     <script type="text/javascript" src="/src/listed/tagListController.js"></script>
+    <script type="text/javascript" src="/src/addques/AddQuesFactory.js"></script>
+    <script type="text/javascript" src="/src/addques/AddQuesController.js"></script>
+
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <!-- Latest compiled and minified CSS -->
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
