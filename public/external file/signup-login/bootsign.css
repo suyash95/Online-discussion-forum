@@ -1,0 +1,125 @@
+/*body{
+	background-color: rgba(0,0,0,0.7);
+}*/
+/*gradient background */
+.gradient{
+	position: relative;
+	padding-top: 5vh;
+	padding-bottom: 7vh;
+	margin-top: 5vh;
+	margin-bottom: 5vh;
+	background: red; /* For browsers that do not support gradients */
+	background-image: linear-gradient( 135deg,#16636b,#1c5e71 15%,#2e5378 30%,#3c5189 45%,#4e4c91 60%,#51427a 75%,#523c70 87%,#51355d);
+	border-radius:7px 7px 7px 7px;
+}
+
+#footer{
+    opacity: 0.25;
+    height: 5.2vh; /*40/768*/
+    bottom: 0px;
+    left: 0;
+    border-radius:0 0 7px 7px;
+    position:absolute;
+    z-index: 100;
+    background-color: white;
+}
+
+/*starting form*/
+form{
+	padding-top: 70px;
+}
+/*Each input type inside form*/
+.form-control{
+	outline: none;
+	background-color: rgba(255,255,255,0.1);
+	box-shadow: none;
+	border-radius: 3px;
+	color: white;
+}
+.form-control:focus{
+	outline: none;
+	border: 1px solid white;
+}
+
+/*submit button*/
+.btn-custom{
+	width: 100%;
+	background-color: rgba(255,255,255,0.8);
+}
+/**/
+input:placeholder-shown {
+  color:white;
+}
+/**/
+input:focus{
+	color:white;
+}
+
+/*placeholder color in input type*/
+.form-control::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+  color: rgba(255,255,255,0.5);
+}
+.form-control::-moz-placeholder { /* Firefox 19+ */
+  color: rgba(255,255,255,0.5);
+}
+.form-control:-ms-input-placeholder { /* IE 10+ */
+  color: rgba(255,255,255,0.5);
+}
+.form-control:-moz-placeholder { /* Firefox 18- */
+  color: rgba(255,255,255,0.5);
+}
+
+/*upload id card content*/
+.help-block{
+	color: rgba(255,255,255,0.5);
+	text-align: right;
+	position: relative;
+	top: -12px;
+}
+
+/*select option in dropdown*/
+.select-option{
+	color: white;
+}
+.select-option option{
+	color: black;
+	background-color: white;
+}
+.select-option option:hover{
+	background: rgba(0,0,0,0.3);
+}
+.option-header{
+	color: rgba(255,255,255,0.5);
+}
+
+/*container containing input[type="file"] */
+.form-custom-file{
+	border: 1px solid #ccc;
+	border-radius: 3px;
+	padding: 6px 12px;
+	background-color: rgba(255,255,255,0.1);
+}
+
+/*custom input[type="file"]*/
+.form-control-custom{
+	outline: none;
+	width: 100%;
+	color: rgba(255,255,255,0.8);
+	line-height: normal;
+}
+input[type="file"]:focus{
+	outline: none;
+}
+
+/*terms and condition and Login*/
+.login-footer{
+	text-align: center;
+	margin-bottom: 0;
+	margin-top: 7vh;
+	color: rgba(255,255,255,0.7);
+	font-size: 13px;
+}
+.login-footer a{
+	color:white;
+	font-size: 14px;
+}
