@@ -6,8 +6,7 @@
                 <section ng-repeat = "ques in home.queslist">
 
                     <!-- question posted -->
-                    <h2 class="ques">{{ques.content}}
-                    Which time-table is being followed on this saturday?</h2>
+                    <h2 class="ques" ui-sref = "question({ques_id: ques.id})">{{ques.content}}</h2>
 
                     <!-- metadata about the question-username,date-time -->
                     <div class="ques-info">
@@ -23,7 +22,7 @@
                     <div class="ans">
                         <p>I heard that the results will come out on 15 September but i'm not sure. As of now, nothing has been heard from the administrative block.</p>
                         <!-- total answer of the previous question -->
-                        <div><a href="">view all<span class="ans-count">15</span> answers</a></div>
+                        <div><a ui-sref = "question({ques_id: ques.id})">view all<span class="ans-count">15</span> answers</a></div>
                     </div>
                     
 
@@ -33,17 +32,9 @@
                             <span class="user">ravi_kathi</span>
                             <span class="comment">this is very helpful. Thanks!!</span>
                         </p>
-                        <p class="user-comment">
-                            <span class="user">suyash_singh_gaur</span>
-                            <span class="comment">I talked to them they said it will come out on 16 sep</span>
-                        </p>
-                        <p class="user-comment">
-                            <span class="user">shreyans_nahata</span>
-                            <span class="comment">Why don't they just confirm the date</span>
-                        </p>
                         <!-- count of comment -->
                         <div class="comment-count">
-                            <a href="">View all <span class="ans-no">20 </span>answers</a>
+                            <a ui-sref = "question({ques_id: ques.id})">View all <span class="ans-no">20 </span>answers</a>
                         </div>
                     </div>
 
@@ -51,10 +42,10 @@
                     <div class="ans-info">
 
                         <span class="ans-up">
-                            <a href="">{{ques.upvote}}<i class="fa fa-chevron-circle-up" aria-hidden="true"></i></a> 22
+                            <a href=""><i class="fa fa-chevron-circle-up" aria-hidden="true"></i></a> {{ques.upvote}}
                         </span>|
                         <span class="ans-down">
-                            <a href="">{{ques.downvote}}<i class="fa fa-chevron-circle-down" aria-hidden="true"></i></a> 4
+                            <a href=""><i class="fa fa-chevron-circle-down" aria-hidden="true"></i></a> {{ques.downvote}}
                             </span>
 
                         <span class="ans-write"><a href=""><i class="fa fa-pencil" aria-hidden="true"></i> Answer</a></span>
@@ -70,7 +61,7 @@
                         <span class="tag-links">Holiday</span>
                     </div>
 
-                    <p><a class="btn btn-default"  ui-sref = "question({ques_id: ques.id})" role="button">View</a></p>
+                    <p><a class="btn btn-default"   role="button">View</a></p>
                     
                 </section>
             </div>

@@ -1,21 +1,48 @@
-<div ng-controller="LoginController as login">
-<form ng-submit = "login.submit()" class="form-signin">
+<!-- css bootsign.css and modal.css add custom style from login1.html-->
 
-  <h2 class="form-signin-heading">Login</h2>
-  
-  <label for="inputUsn" class="sr-only">USN: </label>
-  <input data-ng-model="login.usn" type="text" id="inputUsn" class="form-control" placeholder="USN" required autofocus>
-  <label for="inputPassword" class="sr-only">Password</label>
-  <input data-ng-model="login.password" type="password" id="inputPassword" class="form-control" placeholder="Password" required>
-  <!-- 
-  <div class="checkbox">
-    <label>
-      <input type="checkbox" value="remember-me"> Remember me
-    </label>
-  </div> -->
-  <button class="btn btn-lg btn-primary btn-block" type="submit">Log in</button>
-  <div data-ng-bind="login.message" >
-    <!-- Error Message here!! -->
+<!-- Login Modal -->
+
+<!-- vertical align to align it vertically -->
+<div class="vertical-alignment-helper">
+  <div class="vertical-align-center">
+
+    <!-- outer box -->
+    <div ng-controller="LoginController as login" class="gradient col-lg-4 col-md-4 col-sm-6 col-xs-10 col-lg-offset-4 col-md-offset-4  col-sm-offset-3  col-xs-offset-1">
+
+      <!-- inner box -->
+      <div class="col-lg-8 col-md-10 col-sm-10 col-xs-10 col-lg-offset-2 col-md-offset-1 col-sm-offset-1 col-xs-offset-1">
+
+        <!--starting form-->
+        <form ng-submit = "login.submit()" class="form-signin">
+
+          <!--Email-->
+          <div class="form-group">
+            <input data-ng-model="login.usn" type="text" class="form-control" id="exampleInputEmail1" placeholder="USN">
+          </div>
+
+          <!--Password-->
+          <div class="form-group">
+            <input data-ng-model="login.password" type="password" class="form-control" id="exampleInputEmail1" placeholder="Password">
+          </div>
+
+          <!--submit button-->
+          <button type="submit" class="btn btn-default btn-custom">Login</button>
+
+          <div data-ng-bind="login.message" >
+            <!-- Error Message here!! -->
+          </div>
+
+        </form>
+
+      </div><!--inner padding form-->
+
+      <div id="footer" class="col-lg-12 col-md-12 col-sm-12 col-xs-12"></div>
+
+      <div class="login-footer col-lg-12 col-md-12 col-sm-12 col-xs-12">
+        Don't have an account <a ui-sref="account.signup">Sign Up</a>
+        <br><a href="#">Forgot Password ?</a>
+      </div>
+
+    </div>
   </div>
-</form>
 </div>

@@ -1,7 +1,7 @@
             <div class="col-lg-7 col-md-7 col-sm-9 col-xs-12 main col-lg-offset-2 col-md-offset-2 col-sm-offset-3">
                     <!-- question -->
                     <h2 class="ques">
-                    {{question.curQuestionId}}
+                    {{question.allData.contents}}
                     Which time-table is being followed on this saturday?
                     </h2>
 
@@ -9,7 +9,7 @@
                     <div class="ques-info">
                         <span class="ques-user">
                             <i class="fa fa-user-o" aria-hidden="true"></i> Sumit
-                        </span
+                        </span>
                         <span class="ques-date">
                             <span class="glyphicon glyphicon-time" aria-hidden="true"></span> 13 Oct, 2016
                         </span>

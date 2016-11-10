@@ -1,35 +1,99 @@
-<div ng-controller="SignUpController as signup">
-<form class="form-signin" ng-submit="signup.submit()">
+<div class="vertical-alignment-helper">
+  <div class="vertical-align-center">
 
-  <h2 class="form-signin-heading">Sign Up Page</h2>
+    <!-- outer box -->
+    <div ng-controller="SignUpController as signup" class="gradient col-lg-4 col-md-4 col-sm-6 col-xs-10 col-lg-offset-4 col-md-offset-4 col-sm-offset-3  col-xs-offset-1">
 
-  <div ng-hide="!signup.enable" class="alert alert-warning" data-ng-bind= "signup.message">
 
+      <div class="col-lg-8 col-md-10 col-sm-10 col-xs-10 col-lg-offset-2 col-md-offset-1 col-sm-offset-1 col-xs-offset-1">
+
+        <!--starting form-->
+        <form ng-submit="signup.submit()">
+
+          <div ng-hide="!signup.enable" class="alert alert-warning" data-ng-bind= "signup.message">
+
+          </div>
+
+          <!--College-->
+          <div class="form-group">
+            <input data-ng-model="signup.clg_name" type="text" class="form-control" id="inputClg" placeholder="Your College">
+          </div>
+
+          <!--Username-->
+          <div class="form-group">
+            <input data-ng-model="signup.name" type="text" class="form-control" id="inputName" placeholder="Name">
+          </div>
+
+          <!--Usn/id-->
+          <div class="form-group">
+            <input data-ng-model="signup.usn" type="text" class="form-control" id="inputUsn" placeholder="USN/ID">
+          </div>
+
+          <!--Email-->
+          <div class="form-group">
+            <input data-ng-model="signup.email" type="email" class="form-control" id="inputEmail" placeholder="Email">
+          </div>
+
+          <!--Password-->
+          <div class="form-group">
+            <input data-ng-model="signup.password" type="password" class="form-control" id="inputPassword" placeholder="Password">
+          </div>
+
+          <!--Student/faculty-->
+          <div class="form-group">
+            <select data-ng-model="signup.typ" class="form-control select-option">
+              <!--<option>User Type:</option>-->
+              <option>Student</option>
+              <option>Faculty</option>
+            </select>
+          </div>
+
+          <!--Department-->
+          <div class="form-group">
+            <select data-ng-model="signup.dept_name" class="form-control select-option">
+              <!--<option>Department:</option>-->
+              <option>Aerospace</option>
+              <option>Biotechnology</option>
+              <option>Chemical</option>
+              <option>Civil</option>
+              <option>Computer Science</option>
+              <option>Electrical &amp; Electronics</option>
+              <option>Electronics &amp; Communication</option>
+              <option>Electronics &amp; Instrumentation</option>
+              <option>Industrial Engineering &amp; Management</option>
+              <option>Master of Computer Applications</option>
+              <option>Mechanical</option>
+              <option>Chemistry</option>
+              <option>Physics</option>
+              <option>Mathematics</option>
+            </select>
+          </div>
+
+          <!--upload id card-->
+          <div class="form-group form-custom-file">
+            <input type="file" class="form-control-custom" id="inputId">
+          </div>
+          <span class="help-block">Upload ID Card Photo</span><br>
+
+          <!-- checkbox remember me -->
+          <div class="checkbox">
+            <label>
+              <input type="checkbox" value="remember-me"> Remember me
+            </label>
+          </div>
+
+          <!--submit button-->
+          <button  type="submit" class="btn btn-default btn-custom">Sign Up</button>
+        </form>
+      </div><!--inner padding form-->
+
+      <div id="footer" class="col-lg-12 col-md-12 col-sm-12 col-xs-12"></div>
+
+      <div class="login-footer col-lg-12 col-md-12 col-sm-12 col-xs-12">
+        By signing Up, you agree to our <a href="#">Terms &amp; Condition</a>
+        <br>Already have an account? <a ui-sref="account.login">Log In</a>
+      </div>
+
+    </div>
   </div>
-  <label for="inputDept" class="sr-only" >Your Department</label>
-  <input data-ng-model="signup.dept_name" type="text" id="inputDept" class="form-control" placeholder="Department" required autofocus>
-  <label for="inputClg" class="sr-only" >Your College</label>
-  <input data-ng-model="signup.clg_name" type="text" id="inputClg" class="form-control" placeholder="College" required>
-  <label for="inputUsn" class="sr-only" >Your USN</label>
-  <input data-ng-model="signup.usn" type="text" id="inputUsn" class="form-control" placeholder="USN" required>
-
-  <label for="inputName" class="sr-only" >Your Name</label>
-  <input data-ng-model="signup.name" type="text" id="inputName" class="form-control" placeholder="Name" required>
-  <label for="inputEmail" class="sr-only">Email address</label>
-  <input data-ng-model="signup.email" type="text" id="inputEmail" class="form-control" placeholder="Email address" required ng-bind = "signup.chkusername()">
-  <label for="inputPassword" class="sr-only">Password</label>
-  <input data-ng-model="signup.password" type="password" id="inputPassword" class="form-control" placeholder="Password" required>
-  <label for="inputPhone" class="sr-only" >Your Phone No.</label>
-  <input data-ng-model="signup.phone" type="number" id="inputPhone" class="form-control" placeholder="Phone No." required>
-  <label for="inputTyp" class="sr-only" >Student or Staff?</label>
-  <input data-ng-model="signup.typ" type="text" id="inputTyp" class="form-control" placeholder="Student/Staff" required>
-
-  <div class="checkbox">
-    <label>
-      <input type="checkbox" value="remember-me"> Remember me
-    </label>
-  </div>
-  <button ng-disabled="signup.enable" class="btn btn-lg btn-primary btn-block" type="submit"  >Sign Up</button>
-</form>
-
 </div>

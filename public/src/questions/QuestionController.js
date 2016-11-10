@@ -9,6 +9,15 @@
             self.new_answer = null;
             self.user =  null;
             self.user = $window.localStorage.getItem('user_id');
+            var cur_id = {q_id : self.curQuestionId};
+            Question.getCurDet(cur_id)
+                .then(function(response){
+                    console.log(response);
+                   self.allData = response.data.QUESTION;
+
+                }).catch(function(reason){
+
+                });
             var upd = function() {
                 Question.getAnswers(self.curQuestionId)
                     .then(function (response) {
