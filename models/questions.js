@@ -193,10 +193,66 @@ function storequestions(param,cb)
 
 }
 
+function upvote(param,cb)
+
+{
+
+	var query1 ="select upvote from questions where id = '"+param.q_id+"';";
+
+	async.waterfall([
+
+			function(callback)
+			{
+				connection.query(query1,function(err,rows){
+					if(err)
+					{
+						console.log("error");
+						cb(null,err);
+						return callback(err)
+					}
+					else{
+
+						var up = rows[0].upvote;
+						up = up + 1;
+						console.log(up);
+						callback(null,up);
+					}
+				});
+			},
+
+			function(up,callback)
+			{
+				var query = "update questions set upvote = '" + up + "' where id = '"+param.q_id+"';"
+				connection.query(query,function(err,rows){
+					if(err)
+					{
+						console.log("error");
+						cb(null,err);
+						return callback(err)
+					}
+					else{
+						console.log("updated done");
+						//var col= rows[0].id;
+						//callback(null);
+					}
+				});
+			}
+
+
+		],
+		function(err)
+		{
+			if(err)
+				return err;
+		});
+
+}
+
 module.exports={
 	storequestions :storequestions,
 	fetchquestions  :fetchquestions,
 	fetch : fetch,
 	fetchbyqid:fetchbyqid,
-	edit:edit
+	edit:edit,
+	upvote:upvote
 }

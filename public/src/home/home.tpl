@@ -11,7 +11,7 @@
                     <!-- metadata about the question-username,date-time -->
                     <div class="ques-info">
                         <span class="ques-user">
-                            <i class="fa fa-user-o" aria-hidden="true"></i> Sumit
+                            <i class="fa fa-user-o" aria-hidden="true"></i> {{ques.username}}
                         </span>
                         <span class="ques-date">
                             <span class="glyphicon glyphicon-time" aria-hidden="true"></span> 13 Oct, 2016
@@ -20,32 +20,34 @@
 
                     <!-- most upvoted answer-->
                     <div class="ans">
-                        <p>I heard that the results will come out on 15 September but i'm not sure. As of now, nothing has been heard from the administrative block.</p>
+                        <!--<p>I heard that the results will come out on 15 September but i'm not sure. As of now, nothing has been heard from the administrative block.</p>-->
                         <!-- total answer of the previous question -->
-                        <div><a ui-sref = "question({ques_id: ques.id})">view all<span class="ans-count">15</span> answers</a></div>
+                        <div><a ui-sref = "question({ques_id: ques.id})">view all<span class="ans-count"> </span> answers</a></div>
                     </div>
                     
 
                     <!-- show comments preferabbly 3 comments in order of like as each comment wil have like button and comment button -->
+<!--
                     <div class="other-comments">
                         <p class="user-comment">
                             <span class="user">ravi_kathi</span>
                             <span class="comment">this is very helpful. Thanks!!</span>
                         </p>
-                        <!-- count of comment -->
+                        &lt;!&ndash; count of comment &ndash;&gt;
                         <div class="comment-count">
                             <a ui-sref = "question({ques_id: ques.id})">View all <span class="ans-no">20 </span>answers</a>
                         </div>
                     </div>
+-->
 
                     <!-- different options related to answer like-upvote,downvote -->
                     <div class="ans-info">
 
                         <span class="ans-up">
-                            <a href=""><i class="fa fa-chevron-circle-up" aria-hidden="true"></i></a> {{ques.upvote}}
+                            <a href="" ng-click = "home.update_up(ques.id)"><i class="fa fa-chevron-circle-up" aria-hidden="true"></i></a> {{ques.upvote}}
                         </span>|
                         <span class="ans-down">
-                            <a href=""><i class="fa fa-chevron-circle-down" aria-hidden="true"></i></a> {{ques.downvote}}
+                            <a href="" ng-click = "home.update_dw(ques.id)"><i class="fa fa-chevron-circle-down" aria-hidden="true"></i></a> {{ques.downvote}}
                             </span>
 
                         <span class="ans-write"><a href=""><i class="fa fa-pencil" aria-hidden="true"></i> Answer</a></span>

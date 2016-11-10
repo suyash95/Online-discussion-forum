@@ -108,4 +108,19 @@ router.post('/',function(req,res,next)
 
 });
 
+router.post('/up',function(req,res,next){
+	var details = {
+		q_id: req.body.q_id
+	};
+	questions.upvote(details,function(err,questions){
+		if(err){
+			console.log("error hai");
+			res.json({error:err});
+		}
+		else
+			res.json({msg:"upvoted"});
+
+	});
+});
+
 module.exports = router;
