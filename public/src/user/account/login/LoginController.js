@@ -14,9 +14,14 @@
                     password: self.password
                 }).then(function (response) {
                     console.log(response);
-                    console.log('islo', Account.isLoggedIn);
-                    $rootScope.loggedIn = true;
-                    $state.go('account');
+                    if(!response.data.error) {
+
+                        //console.log('islo', Account.isLoggedIn);
+                        $rootScope.loggedIn = true;
+                        $state.go('home');
+                    }else{
+                        self.Message = response.data.error;
+                    }
                 }).catch(function (reason) {
                     console.log(reason);
                     self.Message = reason;

@@ -29,7 +29,7 @@ var passwrd = req.body.password;
 
 crypto.pbkdf2(passwrd, 'Salt', 100, 30, function (err, key) {
         if (err) {
-            //console.log(err); 
+            //console.log("In encryption", err);
             next(err);
         }
         passwrd = key.toString('hex');
@@ -37,9 +37,11 @@ crypto.pbkdf2(passwrd, 'Salt', 100, 30, function (err, key) {
 
         users.getUser(usrname, passwrd, function (err,users) {
             if (err) {
+                console.log("error");
                 res.json({error: err});
             }
            else{
+                console.log(users);
                 var token = jwt.sign(users, "SUYASH", {
                     expiresInMinutes: 1440 // expires in 24 hours
                 });

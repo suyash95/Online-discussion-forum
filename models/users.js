@@ -108,16 +108,17 @@ function storeuser(param,cb){
 
 function fetchUser(usrname, passwrd, cb) {
 
-        var query = "Select * from user where usn= ? and password = ?";
+        var query = "Select * from user where usn = ? and password = ? ;";
 
         connection.query(query, [usrname, passwrd], function (err, rows) {
             if (err) {console.log("feew");
                 cb(err, null);
             } else if (!rows[0]) {
+                console.log("user not found!");
                 cb("User not found", null);
             }
             else {
-                user_list= [];
+                var user_list= [];
                 var details = {
                     id :rows[0].id,
                     dept_id:rows[0].dept_id,
@@ -133,8 +134,9 @@ function fetchUser(usrname, passwrd, cb) {
                 
                 //console.log("frfrrifjr");
                 //cb(null, rows[0]);
+                cb(null,_.uniq(user_list));
             }
-            cb(null,_.uniq(user_list));
+            //cb(null,_.uniq(user_list));
         });
 
 }

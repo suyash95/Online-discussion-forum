@@ -28,7 +28,7 @@
           <!--submit button-->
           <button type="submit" class="btn btn-default btn-custom">Login</button>
 
-          <div data-ng-bind="login.message" >
+          <div data-ng-bind="login.Message" >
             <!-- Error Message here!! -->
           </div>
 

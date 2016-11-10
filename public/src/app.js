@@ -27,8 +27,8 @@
                     controller: 'SignUpController as signup'
                 })
                 .state('account.logout',{
-                    url: '/user',
-                    templateUrl: dir + 'user/account/account.tpl',
+                    url: '/user/login',
+                    templateUrl: dir + 'user/account/login/login.tpl',
                     controller: 'AccountController as account'
                 })
                 .state('home',{
