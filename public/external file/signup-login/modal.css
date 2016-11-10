@@ -1,0 +1,66 @@
+html,body{
+    height: 100%;
+}
+
+.gradient-login{
+	position: relative;
+	padding-top: 15vh;
+	padding-bottom: 17vh;
+	margin-top: 5vh;
+	margin-bottom: 5vh;
+	background: red; /* For browsers that do not support gradients */
+	background-image: linear-gradient( 135deg,#16636b,#1c5e71 15%,#2e5378 30%,#3c5189 45%,#4e4c91 60%,#51427a 75%,#523c70 87%,#51355d);
+	border-radius:7px 7px 7px 7px;
+}
+.modal-backdrop {
+   background-color: black;
+}
+.modal-backdrop.in {
+    opacity: .75;
+}
+.close {
+    float: right;
+    font-size: 27px;
+    font-weight: normal;
+    line-height: 1;
+    color: white;
+    text-shadow: none;
+    opacity:0.7;
+    position: absolute;
+    top:5px;
+    right: 7px;
+}
+.close:hover{
+	opacity: 1;
+	color: white;
+}
+.close:focus{
+	outline: none;
+}
+
+
+/*using table*/
+.vertical-alignment-helper {
+    display:table;
+    height: 100%;
+    width: 100%;
+    /*pointer-events:none;*/
+}
+
+/* To center vertically */
+.vertical-align-center {
+    
+    display: table-cell;
+    vertical-align: middle;
+    /*pointer-events:none;*/
+}
+
+/* Bootstrap sets the size of the modal in the modal-dialog class, we need to inherit it */
+    
+    /* To center horizontally */
+/*.gradient {
+    
+    
+    pointer-events:all;
+}*/
+
