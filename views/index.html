@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no,maximum-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>Main Page</title>
+
+    <!-- link to the css file styling -->
+    <link rel="stylesheet" type="text/css" href="../css/bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="../bootsign.css">
+    <link rel="stylesheet" type="text/css" href="css/header.css">
+    <link rel="stylesheet" type="text/css" href="css/footer.css">
+    <link rel="stylesheet" type="text/css" href="css/main.css">
+    <link rel="stylesheet" type="text/css" href="css/left-sidebar.css">
+    <link rel="stylesheet" type="text/css" href="css/right-sidebar.css">
+
+    <!-- fonts used in the website -->
+    <link href="https://fonts.googleapis.com/css?family=Fascinate+Inline" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Fascinate" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+
+    <!-- fonts awesome used for icons -->
+    <link rel="stylesheet" href="../font-awesome/css/font-awesome.min.css">
+
+    <!-- jquery used  -->
+    <script type = "text/javascript" 
+         src = "https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+   
+    <script type = "text/javascript">
+         $(document).ready(function() {
+            $(".dropdown-icon-sm button").click(function () {
+               $(".sub-items").toggleClass("is-visible");
+            });
+         });
+    </script>
+
+    <!-- angluar -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/angularjs-toaster/1.1.0/toaster.min.css" rel="stylesheet" />
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/angularjs-toaster/2.0.0/toaster.css">
+
+  </head>
+
+  <body ng-app="miniRvce" >
+
+    <!-- top navigation bar -->
+    <nav class="navbar navbar-default navbar-fixed-top">
+        <div ng-controller= "AccountController as account" class="container-fluid header-items">
+            <ul class="nav navbar-nav  fixed-sm">
+                <li class="website-name"><a href="#" class="logo">Queans</a></li>
+                <li class="pull-right hidden-sm hidden-md hidden-lg dropdown-icon-sm"><button class="btn-box"><span class="glyphicon glyphicon-option-vertical" aria-hidden="true"></span></button></li>
+            </ul>
+            
+            <ul class="nav navbar-nav sub-items dropdown-content-sm">
+                <li class="inline-block"><a href="#" class="nav-items">Post Question</a></li>
+                <li class="inline-block hidden-sm hidden-md hidden-lg"><a href="#" class="nav-items">Tags</a></li>
+                <li class="inline-block"><a href="#" class="nav-items">Unanswered<span class="numb">41</span></a></li>
+                <li class="inline-block"><a href="#" class="nav-items">Popular</a></li> 
+                <li class="inline-block"><a href="../bootsign.html" class="nav-items">Sign Up</a></li>
+                <li ng-if="!loggedIn" class="inline-block"><a ui-sref="account.login" href="../bootlogin.html" class="active nav-items">Login</a></li>
+                <li ng-if="loggedIn" class="inline-block"><a ng-click="account.logout()" ui-sref-active="ak-active-tab" ui-sref="account.logout" href="../bootlogin.html" class="active nav-items">Login</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- main body below the fixed navigation bar -->
+
+    <div class="container-fluid">
+        <!-- row STARTS -->   
+        <div class="row">
+
+          <!-- 1st column STARTS/TAGS -->
+          <div ng-controller = "TagController as tag" class="col-lg-2 col-md-2 col-sm-3 left-sidebar hidden-xs">
+            <h5>SELECT <span>TAGS</span></h5>
+              <ul class="tags">
+
+                  <!-- dynamic tags generated -->
+                  <li ng-repeat="each in tag.tagsList"  class="list-group-item" value="{{each.id}}" ui-sref = "listed({tag_id: each.id})">{{each.name}} ---  {{each.assoc}}</li>
+
+                  <li><a href="#" class="tags-sub">Hostel <span class="numb">23</span> </a></li>
+                  <li><a href="#" class="tags-sub">Sports <span class="numb">31</span></a></li>
+                  <li><a href="#" class="tags-sub">Placements <span class="numb">11</span></a></li>
+                  <li><a href="#" class="tags-sub">Freshers <span class="numb">73</span></a></li>
+                  <li><a href="#" class="tags-sub">Clubs <span class="numb">8</span></a></li>
+                  <li><a href="#" class="tags-sub">Lost &amp; Found <span class="numb">15</span></a></li>
+                  <li><a href="#" class="tags-sub">News <span class="numb">174</span></a></li>
+                  <li><a href="#" class="tags-sub">Holidays <span class="numb">89</span></a></li>
+                  <li><a href="#" class="tags-sub">Departments <span class="numb">123</span></a></li>
+                  <li><a href="#" class="tags-sub">Aerospace <span class="numb">23</span></a></li>    
+                  <li><a href="#" class="tags-sub">Biotechnology <span class="numb">23</span></a></li>
+                  <li><a href="#" class="tags-sub">Chemical <span class="numb">23</span></a></li>
+                  <li><a href="#" class="tags-sub">Civil <span class="numb">23</span></a></li>
+                  <li><a href="#" class="tags-sub">Computer Science <span class="numb">23</span></a></li>    
+                  <li><a href="#" class="tags-sub">Electrical &amp; Electronics <span class="numb">23</span></a></li>
+                  <li><a href="#" class="tags-sub">Electronics &amp; Communication <span class="numb">23</span></a></li>
+                  <li><a href="#" class="tags-sub">Electronics &amp; Instrumentation <span class="numb">23</span></a></li>
+                  <li><a href="#" class="tags-sub">Industrial Engineering &amp; Management <span class="numb">23</span></a></li>    
+                  <li><a href="#" class="tags-sub">Master of Computer Applications <span class="numb">23</span></a></li>
+                  <li><a href="#" class="tags-sub">Mechanical <span class="numb">23</span></a></li>
+                  <li><a href="#" class="tags-sub">Chemistry <span class="numb">23</span></a></li>
+                  <li><a href="#" class="tags-sub">Physics <span class="numb">23</span></a></li>
+                  <li><a href="#" class="tags-sub">Mathematics <span class="numb">23</span></a></li>
+              </ul>
+              <a href="" id="request-tags">Request TAGS</a>
+          </div><!-- 1st column ENDS -->
+
+
+          <!-- 2nd column START/ Main STARTS/dynamic content generated here -->
+          <div class="col-lg-7 col-md-7 col-sm-9 col-xs-12 main col-lg-offset-2 col-md-offset-2 col-sm-offset-3">
+
+            <!-- dynamic content generated -->
+            <ui-view>
+
+                <!-- today date as landing page will show the questions asked today -->
+                <div class="common-date">13 Sep,2016</div>
+
+                <!-- different section -->
+                <section>
+
+                    <!-- question posted -->
+                    <h2 class="ques">Which time-table is being followed on this saturday?</h2>
+
+                    <!-- metadata about the question-username,date-time -->
+                    <div class="ques-info">
+                        <span class="ques-user">
+                            <i class="fa fa-user-o" aria-hidden="true"></i> Sumit
+                        </span>
+                        <span class="ques-date">
+                            <span class="glyphicon glyphicon-time" aria-hidden="true"></span> 13 Oct, 2016
+                        </span>
+                    </div>
+
+                    <!-- most upvoted answer-->
+                    <div class="ans">
+                        <p>I heard that the results will come out on 15 September but i'm not sure. As of now, nothing has been heard from the administrative block.</p>
+                        <!-- total answer of the previous question -->
+                        <div><a href="">view all<span class="ans-count">15</span> answers</a></div>
+                    </div>
+                    
+
+                    <!-- show comments preferabbly 3 comments in order of like as each comment wil have like button and comment button -->
+                    <div class="other-comments">
+                        <p class="user-comment">
+                            <span class="user">ravi_kathi</span>
+                            <span class="comment">this is very helpful. Thanks!!</span>
+                        </p>
+                        <p class="user-comment">
+                            <span class="user">suyash_singh_gaur</span>
+                            <span class="comment">I talked to them they said it will come out on 16 sep</span>
+                        </p>
+                        <p class="user-comment">
+                            <span class="user">shreyans_nahata</span>
+                            <span class="comment">Why don't they just confirm the date</span>
+                        </p>
+                        <!-- count of comment -->
+                        <div class="comment-count">
+                            <a href="">View all <span class="ans-no">20 </span>answers</a>
+                        </div>
+                    </div>
+
+                    <!-- different options related to answer like-upvote,downvote -->
+                    <div class="ans-info">
+
+                        <span class="ans-up"><a href=""><i class="fa fa-chevron-circle-up" aria-hidden="true"></i></a> 22</span>|
+                        <span class="ans-down"><a href=""><i class="fa fa-chevron-circle-down" aria-hidden="true"></i></a> 4</span>
+
+                        <span class="ans-write"><a href=""><i class="fa fa-pencil" aria-hidden="true"></i> Answer</a></span>
+
+                        <span class="ans-comment"><a role="button" data-toggle="collapse" href="#write-comment" aria-expanded="false" aria-controls="write-comment"><i class="fa fa-comment-o" aria-hidden="true"></i> Comment</a></span>
+
+                        <span class="ans-report"><a href="" data-toggle="tooltip" data-placement="top" title="Ban this Quesion"><i class="fa fa-ban" aria-hidden="true"></i> Report</a></span>
+                    </div>
+
+                    <!-- tags related to the question -->
+                    <div class="tags-info">
+                        <span class="tag-links">Depatment</span>
+                        <span class="tag-links">Holiday</span>
+                    </div>
+
+                </section>
+            </ui-view>
+                
+            
+            <!-- page navigation links -->
+              <nav aria-label="Page navigation">
+                <div class="center-navigation">
+                  <ul class="pagination">
+                    <li>
+                      <a href="#" aria-label="Previous" class="previous" disabled="disabled">
+                        <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                      </a>
+                    </li>
+                    <li><a href="#" class="current-page">1</a></li>
+                    <li><a href="#">2</a></li>
+                    <li><a href="#">3</a></li>
+                    <li><a href="#">4</a></li>
+                    <li><a href="#">5</a></li>
+                    <li>
+                      <a href="#" aria-label="Next" class="next">
+                        <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                      </a>
+                    </li>
+                  </ul>
+                  </div>
+                </nav>
+
+            </div><!-- 2nd column ENDS/MAIN PAGE ENDS-->
+
+
+            <!-- 3rd column STARTS/RIGHT SIDEBAR -->
+            <div class="col-lg-3 col-md-3 hidden-sm hidden-xs right">
+
+                <!-- popular post preferablly 5 posts -->
+                <aside id="popular-post">
+                    <h5>POPULAR Posts</h5>
+                    <ul class="right-sidebar">
+                        <li>
+                            <a href="">In February 2006, she performed in Neil Simon's Broadway production of Barefoot in the Park.</a>
+                            <!-- <div><span class="user-name">Sumit</span><span class="time">10 Sep 12:21 AM </span></div> -->
+                        </li>
+                        
+                    </ul>
+                </aside>
+
+                <!-- popular news preferablly 5 news -->
+                <aside id="recent-news">
+                    <h5>RECENT News</h5>
+                    <ul class="right-sidebar">
+                        <li>
+                            <a href="">In February 2006, she performed in Neil Simon's Broadway production of Barefoot in the Park.</a>
+                            <!-- <div><span class="user-name">Sumit</span><span class="time">10 Sep 12:21 AM </span></div> -->
+                        </li>
+                    </ul>
+                </aside>
+            </div>
+            <!-- 3rd column ENDS/RIGHT SIDEBAR ENDS -->
+
+
+      </div><!-- row END -->
+  </div>
+
+
+
+    <script type="text/javascript" src="/src/app.js"></script>
+    <script type="text/javascript" src="/src/user/account/AccountFactory.js"></script>
+    <script type="text/javascript" src="/src/user/account/AccountController.js"></script>
+    <script type="text/javascript" src="/src/user/account/login/LoginController.js"></script>
+    <script type="text/javascript" src="/src/user/account/signup/SignUpController.js"></script>
+    <script type="text/javascript" src="/src/home/HomeFactory.js"></script>
+    <script type="text/javascript" src="/src/home/HomeController.js"></script>
+    <script type="text/javascript" src="/src/questions/QuestionFactory.js"></script>
+    <script type="text/javascript" src="/src/questions/QuestionController.js"></script>
+    <script type="text/javascript" src="/src/tag/TagFactory.js"></script>
+    <script type="text/javascript" src="/src/tag/TagController.js"></script>
+    <script type="text/javascript" src="/src/listed/tagListFactory.js"></script>
+    <script type="text/javascript" src="/src/listed/tagListController.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    
+
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-animate.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angularjs-toaster/2.0.0/toaster.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.3.1/angular-ui-router.min.js"></script>
+
+</body>
+</html>
