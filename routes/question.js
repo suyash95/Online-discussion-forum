@@ -123,4 +123,19 @@ router.post('/up',function(req,res,next){
 	});
 });
 
+router.post('/dw',function(req,res,next){
+	var details = {
+		q_id: req.body.q_id
+	};
+	questions.downvote(details,function(err,questions){
+		if(err){
+			console.log("error hai");
+			res.json({error:err});
+		}
+		else
+			res.json({msg:"upvoted"});
+
+	});
+});
+
 module.exports = router;
