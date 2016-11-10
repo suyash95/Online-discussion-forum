@@ -15,16 +15,26 @@
 
 			function login (data) {
                 var self = this;
-				id = data.usn;
+				//id = data.usn;
 				return $http.post('/login', data)
 						.then(function (response) {
-							console.log(response);
+							//console.log(response);
                             self.isLoggedIn = true;
 							token = response.data.token;
-							/*id = response.data.id;*/
+							id = response.data.USER[0].id ;
+							var d_id = response.data.USER[0].dept_id;
+							//console.log(response.data);
 							$window.localStorage.setItem('token' , token);
 							$window.localStorage.setItem('user_id' , id);
-                            console.log('isLoggedin', self.isLoggedIn);
+							$window.localStorage.setItem('d_id' , d_id);
+							$window.localStorage.setItem('cl_id' , response.data.USER[0].col_id);
+							$window.localStorage.setItem('name' , response.data.USER[0].name);
+							$window.localStorage.setItem('usn' , response.data.USER[0].usn);
+							$window.localStorage.setItem('email' , response.data.USER[0].email);
+							$window.localStorage.setItem('phone' , response.data.USER[0].phone);
+							$window.localStorage.setItem('type' , response.data.USER[0].type);
+							$window.localStorage.setItem('vfd', response.data.USER[0].verified);
+							//console.log('isLoggedin', self.isLoggedIn);
 							return response;
 						}).catch(function(reason){
 							console.log(reason);

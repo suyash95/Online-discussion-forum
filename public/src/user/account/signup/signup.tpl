@@ -24,6 +24,11 @@
             <input data-ng-model="signup.name" type="text" class="form-control" id="inputName" placeholder="Name">
           </div>
 
+          <!--Phone-->
+          <div class="form-group">
+            <input data-ng-model="signup.phone" type="number" class="form-control" id="inputPhone" placeholder="Mobile No.">
+          </div>
+
           <!--Usn/id-->
           <div class="form-group">
             <input data-ng-model="signup.usn" type="text" class="form-control" id="inputUsn" placeholder="USN/ID">
@@ -43,8 +48,8 @@
           <div class="form-group">
             <select data-ng-model="signup.typ" class="form-control select-option">
               <!--<option>User Type:</option>-->
-              <option>Student</option>
-              <option>Faculty</option>
+              <option value = 1 >Student</option>
+              <option value = 2 >Faculty</option>
             </select>
           </div>
 
@@ -52,11 +57,11 @@
           <div class="form-group">
             <select data-ng-model="signup.dept_name" class="form-control select-option">
               <!--<option>Department:</option>-->
-              <option>Aerospace</option>
-              <option>Biotechnology</option>
+              <option value="aero">Aerospace</option>
+              <option value="biot">Biotechnology</option>
               <option>Chemical</option>
               <option>Civil</option>
-              <option>Computer Science</option>
+              <option value = "cse">Computer Science</option>
               <option>Electrical &amp; Electronics</option>
               <option>Electronics &amp; Communication</option>
               <option>Electronics &amp; Instrumentation</option>

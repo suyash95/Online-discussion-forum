@@ -42,6 +42,7 @@ function storeuser(param,cb){
             else{
                 console.log('query executed for dept');
                 var d = rows[0].id;
+                console.log(d);
                 callback(null,d);
         }
     });
@@ -56,7 +57,7 @@ function storeuser(param,cb){
             else{
                 console.log('query executed for clg');
                 var cl=rows[0].id;
-                //console.log(cl);
+                console.log(cl);
                 callback(null,cl,d);
         }
     });
