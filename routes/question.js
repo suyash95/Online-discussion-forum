@@ -95,7 +95,8 @@ router.post('/',function(req,res,next)
 		u_id:req.body.u_id,
 		col_id:req.body.col_id,
 		contents : req.body.contents,
-		username : req.body.username
+		username : req.body.username,
+		pdate: req.body.pdate
 	};
 
 	questions.storequestions(details,function(err,questions){

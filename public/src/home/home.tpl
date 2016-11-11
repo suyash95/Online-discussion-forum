@@ -14,7 +14,7 @@
                             <i class="fa fa-user-o" aria-hidden="true"></i> {{ques.username}}
                         </span>
                         <span class="ques-date">
-                            <span class="glyphicon glyphicon-time" aria-hidden="true"></span> 13 Oct, 2016
+                            <span class="glyphicon glyphicon-time" aria-hidden="true"></span> {{ques.pdate}}
                         </span>
                     </div>
 

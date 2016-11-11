@@ -20,6 +20,9 @@
             self.col_id = $window.localStorage.getItem('cl_id');
             self.tag_id = null;
             self.tag_name = null;
+            var date = new Date();
+            self.cur_date = ('0' + date.getDate()).slice(-2)  + '-' + ('0' + (date.getMonth() + 1)).slice(-2) + '-' +  date.getFullYear();
+
             var ques_data = {};
 
             self.getTag = function(a,b){
@@ -35,7 +38,8 @@
                     u_id: self.user,
                     col_id: self.col_id,
                     contents: self.new_ques,
-                    username: self.uname
+                    username: self.uname,
+                    pdate: self.cur_date
                 };
                 AddQues.postQues(ques_data)
                     .then((function (response) {
