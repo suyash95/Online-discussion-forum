@@ -12,6 +12,11 @@
 			function signUp (data) {
 				return $http.post('/signup', data);
 			}
+			function isVerified (){
+				if($window.localStorage.getItem('vfd') === 1)
+					return true;
+				return false;
+			}
 
 			function login (data) {
                 var self = this;
@@ -47,7 +52,7 @@
 			}
 			function isLoggedInFunc(){
 				if(getToken() && getUserId()) {
-                    console.log('Logged in');
+                   // console.log('Logged in');
                     isLoggedIn = true;
                     return true;
                 }
@@ -78,7 +83,8 @@
 				getToken: getToken,
 				isLoggedIn : this.isLoggedIn,
                 isLoggedInFunc: isLoggedInFunc,
-				logout : logout
+				logout : logout,
+				isVerified:isVerified
 			}
 		}]);
 

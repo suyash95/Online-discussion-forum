@@ -6,8 +6,9 @@
 			var self = this;
 			
 			$rootScope.loggedIn = Account.isLoggedInFunc();
-			
-			console.log(Account.isloggedIn);
+			$rootScope.verifiedAcc = Account.isVerified();
+
+			//console.log(Account.isloggedIn);
 
 			self.logout = function(){
 				Account.logout();

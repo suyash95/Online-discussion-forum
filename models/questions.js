@@ -34,7 +34,8 @@ function fetchquestions(param,cb)
                     upvote:rows[i].upvote,
                     downvote:rows[i].downvote,
                     col_id:rows[i].col_id,
-                    username:rows[i].username
+                    username:rows[i].username,
+					tag: rows[i].tag
                 };
 				question_list.push(details);
 				i++;
@@ -63,7 +64,8 @@ function fetchbyqid(param,cb)
                     upvote:rows[0].upvote,
                     downvote:rows[0].downvote,
                     col_id:rows[0].col_id,
-                    username:rows[0].username
+                    username:rows[0].username,
+					tag: rows[0].tag
 			};
 			question_list.push(details);
 		}
@@ -93,7 +95,8 @@ function fetch(cb)
                     upvote:rows[i].upvote,
                     downvote:rows[i].downvote,
                     col_id:rows[i].col_id,
-                    username:rows[i].username
+                    username:rows[i].username,
+					tag: rows[i].tag
 			};
 			question_list.push(details);
 			i++;
@@ -121,7 +124,7 @@ function edit(param,cb)
 function storequestions(param,cb)
 {
 	
-	var query = "Insert into questions values (?,?,?,?,?,?,?,?,?);";
+	var query = "Insert into questions values (?,?,?,?,?,?,?,?,?,?);";
 	var query1 ="select assoc from tags where id = '"+param.tag_id+"';"
 	
 	/*var uid = "select id from user where id = '"+(param.u_id)+"';"
@@ -132,7 +135,7 @@ function storequestions(param,cb)
 	async.waterfall([
 		function(callback)
 		{
-			var values =[0,param.u_id,param.tag_id,param.contents,0,0,param.col_id,param.username,0];
+			var values =[0,param.u_id,param.tag_id,param.contents,0,0,param.col_id,param.username,0,param.tag];
 			connection.query(query,values,function(err,rows){
 				if(err)
 				{

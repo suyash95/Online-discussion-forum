@@ -7,10 +7,11 @@
             var self = this;
             self.tagsList = [];
             self.queslist = [];
+
             self.getall = function () {
                 Home.getQuestions()
                     .then(function (response) {
-                        console.log(response);
+                        //console.log(response);
                         self.queslist = response.data.QUESTION;
                     }).catch(function (reason) {
                         console.log('error:', reason);

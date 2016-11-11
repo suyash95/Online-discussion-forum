@@ -90,6 +90,7 @@ router.post('/editquestion',function(req,res,next){
 router.post('/',function(req,res,next)
 {
 	var details ={
+		tag: req.body.tag,
 		tag_id:req.body.tag_id,
 		u_id:req.body.u_id,
 		col_id:req.body.col_id,

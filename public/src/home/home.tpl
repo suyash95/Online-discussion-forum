@@ -44,27 +44,23 @@
                     <div class="ans-info">
 
                         <span class="ans-up">
-                            <a href="" ng-click = "home.update_up(ques.id)"><i class="fa fa-chevron-circle-up" aria-hidden="true"></i></a> {{ques.upvote}}
+                            <a href="" ng-click = "home.update_up(ques.id)" ng-if = "verifiedAcc"><i class="fa fa-chevron-circle-up" aria-hidden="true"></i></a> {{ques.upvote}}
                         </span>|
                         <span class="ans-down">
-                            <a href="" ng-click = "home.update_dw(ques.id)"><i class="fa fa-chevron-circle-down" aria-hidden="true"></i></a> {{ques.downvote}}
+                            <a href="" ng-click = "home.update_dw(ques.id)" ng-if = "verifiedAcc"><i class="fa fa-chevron-circle-down" aria-hidden="true"></i></a> {{ques.downvote}}
                             </span>
 
-                        <span class="ans-write"><a href=""><i class="fa fa-pencil" aria-hidden="true"></i> Answer</a></span>
+                        <span class="ans-write"><a ui-sref = "question({ques_id: ques.id})" ><i class="fa fa-pencil" aria-hidden="true"></i> Answer</a></span>
 
-                        <span class="ans-comment"><a role="button" data-toggle="collapse" href="#write-comment" aria-expanded="false" aria-controls="write-comment"><i class="fa fa-comment-o" aria-hidden="true"></i> Comment</a></span>
+                        <!--<span class="ans-comment"><a role="button" data-toggle="collapse" href="#write-comment" aria-expanded="false" aria-controls="write-comment"><i class="fa fa-comment-o" aria-hidden="true"></i> Comment</a></span>-->
 
                         <span class="ans-report"><a href="" data-toggle="tooltip" data-placement="top" title="Ban this Quesion"><i class="fa fa-ban" aria-hidden="true"></i> Report</a></span>
                     </div>
 
                     <!-- tags related to the question -->
                     <div class="tags-info">
-                        <span class="tag-links">Depatment</span>
-                        <span class="tag-links">Holiday</span>
+                        <span class="tag-links" ui-sref = "listed({tag_id:ques.tag_id})">{{ques.tag}}</span>
                     </div>
-
-                    <p><a class="btn btn-default"   role="button">View</a></p>
-                    
                 </section>
             </div>
         </div>
