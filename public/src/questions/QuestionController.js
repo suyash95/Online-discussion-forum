@@ -9,15 +9,18 @@
             self.new_answer = null;
             self.user =  null;
             self.user = $window.localStorage.getItem('user_id');
-            var cur_id = {q_id : self.curQuestionId};
-            Question.getCurDet(cur_id)
-                .then(function(response){
-                    console.log(response);
-                   self.allData = response.data.QUESTION;
+            var cur_id =  self.curQuestionId;
+            var curDet = function() {
+                Question.getCurDet(cur_id)
+                    .then(function (response) {
+                        console.log(response);
+                        self.allData = response.data.QUESTION;
 
-                }).catch(function(reason){
-
-                });
+                    }).catch(function (reason) {
+                        console.log(reason);
+                    });
+            };
+            curDet();
             var upd = function() {
                 Question.getAnswers(self.curQuestionId)
                     .then(function (response) {
@@ -42,6 +45,25 @@
                     });
 
             };
+
+            self.update_up = function (id){
+                Question.upd_up(id)
+                    .then(function(response){
+                        console.log(response);
+                        //self.getall();
+                    }).catch(function(reason){
+                        console.log(reason);
+                    });
+            };
+            self.update_dw = function (id){
+                Question.upd_dw(id)
+                    .then(function(response){
+                        console.log(response);
+                    }).catch(function(reason){
+                        console.log(reason);
+                    });
+            };
+
 
         });
 })();

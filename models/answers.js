@@ -11,7 +11,7 @@ connection.connect(function(err){
 
 function getanswers(param,cb)
 {
-	console.log(param);
+	//console.log(param);
 	var query = "select * from answers where q_id = "+param+";"
 	connection.query(query,function(err,rows){
 		if(err){
@@ -23,6 +23,7 @@ function getanswers(param,cb)
 			i=0;
 			while(i<rows.length ){
                 var details={
+                    id:rows[i].id,
                     q_id:rows[i].q_id,
                     u_id:rows[i].u_id,
                     content:rows[i].content,
@@ -142,8 +143,120 @@ function editanswers(param,cb)
     }); 
 }
 
+
+function upvote(param,cb)
+{
+
+    var query1 ="select upvote from answers where id = '"+param.a_id+"';";
+
+    async.waterfall([
+
+            function(callback)
+            {
+                connection.query(query1,function(err,rows){
+                    if(err)
+                    {
+                        console.log("error");
+                        cb(null,err);
+                        return callback(err)
+                    }
+                    else{
+
+                        var up = rows[0].upvote;
+                        up = up + 1;
+                        console.log(up);
+                        callback(null,up);
+                    }
+                });
+            },
+
+            function(up,callback)
+            {
+                var query = "update answers set upvote = '" + up + "' where id = '"+param.a_id+"';"
+                connection.query(query,function(err,rows){
+                    if(err)
+                    {
+                        console.log("error");
+                        cb(null,err);
+                        return callback(err)
+                    }
+                    else{
+                        console.log("updated done");
+                        //var col= rows[0].id;
+                        //callback(null);
+                    }
+                });
+            }
+
+
+        ],
+        function(err)
+        {
+            if(err)
+                return err;
+        });
+
+}
+
+function downvote(param,cb)
+
+{
+
+    var query1 ="select downvote from answers where id = '"+param.a_id+"';";
+
+    async.waterfall([
+
+            function(callback)
+            {
+                connection.query(query1,function(err,rows){
+                    if(err)
+                    {
+                        console.log("error");
+                        cb(null,err);
+                        return callback(err)
+                    }
+                    else{
+
+                        var up = rows[0].downvote;
+                        up = up + 1;
+                        //console.log(up);
+                        callback(null,up);
+                    }
+                });
+            },
+
+            function(up,callback)
+            {
+                var query = "update answers set downvote = '" + up + "' where id = '"+param.a_id+"';"
+                connection.query(query,function(err,rows){
+                    if(err)
+                    {
+                        console.log("error");
+                        cb(null,err);
+                        return callback(err)
+                    }
+                    else{
+                        console.log("updated done");
+                        //var col= rows[0].id;
+                        //callback(null);
+                    }
+                });
+            }
+
+
+        ],
+        function(err)
+        {
+            if(err)
+                return err;
+        });
+
+}
+
 module.exports={
 	getanswers : getanswers,
 	addanswers : addanswers,
-    editanswers :editanswers
+    editanswers :editanswers,
+    upvote:upvote,
+    downvote:downvote
 }

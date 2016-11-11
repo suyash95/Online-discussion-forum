@@ -135,7 +135,7 @@ router.post('/dw',function(req,res,next){
 			res.json({error:err});
 		}
 		else
-			res.json({msg:"upvoted"});
+			res.json({msg:"downvoted"});
 
 	});
 });

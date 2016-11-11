@@ -19,7 +19,7 @@ var mysql=require('mysql');
 
 router.get('/',function(req,res,next){
 	//console.log(req.headers);
-	console.log("Req",req);
+	//console.log("Req",req);
 	//var id = req.headers.id;
 	//console.log(id);
 	//console.log(req.headers['x-access-token']);
@@ -83,6 +83,36 @@ answers.editanswers(details,function(err,answers){
 		else
 			res.json({msg:"answer edited"});
 	 
+	});
+});
+
+router.post('/up',function(req,res,next){
+	var details = {
+		a_id: req.body.a_id
+	};
+	answers.upvote(details,function(err,answers){
+		if(err){
+			console.log("error hai");
+			res.json({error:err});
+		}
+		else
+			res.json({msg:"upvoted"});
+
+	});
+});
+
+router.post('/dw',function(req,res,next){
+	var details = {
+		a_id: req.body.a_id
+	};
+	answers.downvote(details,function(err,answers){
+		if(err){
+			console.log("error hai");
+			res.json({error:err});
+		}
+		else
+			res.json({msg:"downvoted"});
+
 	});
 });
 

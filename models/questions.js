@@ -23,7 +23,7 @@ function fetchquestions(param,cb)
 			cb(err,null);
 		}
 		else{
-			question_list = [];
+			var question_list = [];
 			i=0;
 			while(i<rows.length ){
                 var details={
@@ -49,7 +49,8 @@ function fetchquestions(param,cb)
 
 function fetchbyqid(param,cb)
 {
-	var query = "select * from questions where id ="+param+";"
+	console.log(param);
+	var query = "select * from questions where id = '"+param+"' ;";
 	connection.query(query,function(err,rows){
 		if(err){
 			console.log(err);
@@ -57,7 +58,7 @@ function fetchbyqid(param,cb)
 		}
 		else
 		{
-			question_list =[];
+			var question_list =[];
 			var details ={
 				    id :rows[0].id,
                     u_id:rows[0].u_id,
@@ -68,12 +69,13 @@ function fetchbyqid(param,cb)
                     col_id:rows[0].col_id,
                     username:rows[0].username,
 					tag: rows[0].tag,
-					is_answrd: rows[i].is_answrd,
-					pdate: rows[i].pdate
+					is_answrd: rows[0].is_answrd,
+					pdate: rows[0].pdate
 			};
 			question_list.push(details);
+			cb(null,_.uniq(question_list));
 		}
-		cb(null,_.uniq(question_list));
+
 });
 }
 
