@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 09, 2016 at 12:05 PM
+-- Generation Time: Nov 11, 2016 at 08:34 PM
 -- Server version: 5.6.25
 -- PHP Version: 5.6.11
 
@@ -56,7 +56,7 @@ CREATE TABLE IF NOT EXISTS `answers` (
   `upvote` int(6) NOT NULL DEFAULT '0',
   `downvote` int(6) NOT NULL DEFAULT '0',
   `username` varchar(100) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `answers`
@@ -64,7 +64,8 @@ CREATE TABLE IF NOT EXISTS `answers` (
 
 INSERT INTO `answers` (`id`, `q_id`, `u_id`, `content`, `upvote`, `downvote`, `username`) VALUES
 (2, 1, 1, 'hey !!!! its working', 0, 0, ''),
-(3, 2, 7, 'a', 0, 0, 'suyash');
+(3, 2, 7, 'a', 0, 0, 'suyash'),
+(4, 2, 7, 'sa', 0, 0, 'suyash');
 
 -- --------------------------------------------------------
 
@@ -132,16 +133,23 @@ CREATE TABLE IF NOT EXISTS `questions` (
   `downvote` int(6) NOT NULL DEFAULT '0',
   `col_id` int(6) NOT NULL,
   `username` varchar(100) NOT NULL,
-  `is_answrd` int(1) NOT NULL DEFAULT '0'
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+  `is_answrd` int(1) NOT NULL DEFAULT '0',
+  `tag` varchar(50) NOT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `questions`
 --
 
-INSERT INTO `questions` (`id`, `u_id`, `tag_id`, `content`, `upvote`, `downvote`, `col_id`, `username`, `is_answrd`) VALUES
-(1, 1, 1, 'is it true', 0, 0, 1, 'nahata', 0),
-(2, 7, 1, 'can someone answer', 0, 0, 1, 'aa', 0);
+INSERT INTO `questions` (`id`, `u_id`, `tag_id`, `content`, `upvote`, `downvote`, `col_id`, `username`, `is_answrd`, `tag`) VALUES
+(1, 1, 1, 'is it true', 1, 1, 1, 'nahata', 1, 'hostel'),
+(2, 7, 1, 'can someone answer', 1, 0, 1, 'aa', 1, 'hostel'),
+(3, 7, 1, 'aaa', 0, 0, 1, 'lol', 0, 'sports'),
+(4, 7, 2, 'ss', 0, 0, 1, 'lol', 0, 'hostel'),
+(5, 25, 2, 'aaa', 0, 0, 1, 'sn', 0, 'sports'),
+(6, 25, 2, 'qwe', 0, 0, 1, 'sn', 0, 'hostel'),
+(7, 25, 2, 'qwe', 0, 0, 1, 'sn', 0, 'sports'),
+(8, 25, 2, 'qwqwe', 0, 0, 1, 'sn', 0, 'sports');
 
 -- --------------------------------------------------------
 
@@ -160,8 +168,8 @@ CREATE TABLE IF NOT EXISTS `tags` (
 --
 
 INSERT INTO `tags` (`id`, `name`, `assoc`) VALUES
-(1, 'hostel', 0),
-(2, 'sports', 0);
+(1, 'hostel', 4),
+(2, 'sports', 4);
 
 -- --------------------------------------------------------
 
@@ -180,7 +188,7 @@ CREATE TABLE IF NOT EXISTS `user` (
   `phone` int(10) NOT NULL,
   `type` int(1) NOT NULL,
   `verified` int(1) NOT NULL DEFAULT '0'
-) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=26 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `user`
@@ -192,7 +200,9 @@ INSERT INTO `user` (`id`, `dept_id`, `col_id`, `name`, `usn`, `email`, `password
 (9, 1, 1, 'suyash', 'lol111', 's1@gmail.com', '8b04e39628a5ff5acfe917ee58554c34a71dde2fd47ad0a14fd71bf4f9ed', 1234, 0, 0),
 (13, 1, 1, 'suyash', '114', 'raan@gmail.com', 'a85ce36495072b8c9f50170cb7eb0ab7ab49a949436b92222d9af1967c14', 1234, 0, 0),
 (15, 1, 1, 'suyash', '100', 'raan@gmail.com', 'a85ce36495072b8c9f50170cb7eb0ab7ab49a949436b92222d9af1967c14', 1234, 0, 0),
-(16, 1, 1, 'suyash', '144', 'raan@gmail.com', 'a85ce36495072b8c9f50170cb7eb0ab7ab49a949436b92222d9af1967c14', 1234, 0, 0);
+(16, 1, 1, 'suyash', '144', 'raan@gmail.com', 'a85ce36495072b8c9f50170cb7eb0ab7ab49a949436b92222d9af1967c14', 1234, 0, 0),
+(24, 1, 1, 'a', 'a', 'a', '49efe23ca1be72cbfc8f7f87a4ef642b7abe87631f8fdac90e138962080c', 1, 0, 0),
+(25, 1, 1, 'sn', 'sn', 'sn@sn.sn', '8b04e39628a5ff5acfe917ee58554c34a71dde2fd47ad0a14fd71bf4f9ed', 99, 1, 0);
 
 -- --------------------------------------------------------
 
@@ -290,7 +300,7 @@ ALTER TABLE `admin`
 -- AUTO_INCREMENT for table `answers`
 --
 ALTER TABLE `answers`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=4;
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=5;
 --
 -- AUTO_INCREMENT for table `college`
 --
@@ -310,7 +320,7 @@ ALTER TABLE `dept`
 -- AUTO_INCREMENT for table `questions`
 --
 ALTER TABLE `questions`
-  MODIFY `id` int(8) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
+  MODIFY `id` int(8) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=9;
 --
 -- AUTO_INCREMENT for table `tags`
 --
@@ -320,7 +330,7 @@ ALTER TABLE `tags`
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `id` int(8) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=17;
+  MODIFY `id` int(8) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=26;
 --
 -- Constraints for dumped tables
 --
