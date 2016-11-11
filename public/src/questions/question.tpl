@@ -75,8 +75,15 @@
 
 
     </section>
+<!--
 
     <label for="answer" class="sr-only">Write answer</label>
     <input type="text" name="answer" class="form-control" ng-model = "question.new_answer">
     <button class="btn btn-lg btn-primary btn-block" type="submit" ng-click="question.addAnswer()">Submit answer</button>
+-->
+
+    <form class="post-comment">
+        <input type="text" class="inp-comment" placeholder="Enter Answer" ng-model = "question.new_answer">
+        <button type="submit" class="sub-comment" ng-click="question.addAnswer()">Submit</button>
+    </form>
 </div>
