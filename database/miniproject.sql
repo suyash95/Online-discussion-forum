@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 11, 2016 at 08:34 PM
+-- Generation Time: Nov 11, 2016 at 09:53 PM
 -- Server version: 5.6.25
 -- PHP Version: 5.6.11
 
@@ -56,16 +56,17 @@ CREATE TABLE IF NOT EXISTS `answers` (
   `upvote` int(6) NOT NULL DEFAULT '0',
   `downvote` int(6) NOT NULL DEFAULT '0',
   `username` varchar(100) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `answers`
 --
 
 INSERT INTO `answers` (`id`, `q_id`, `u_id`, `content`, `upvote`, `downvote`, `username`) VALUES
-(2, 1, 1, 'hey !!!! its working', 0, 0, ''),
+(2, 1, 1, 'hey !!!! its working', 1, 1, ''),
 (3, 2, 7, 'a', 0, 0, 'suyash'),
-(4, 2, 7, 'sa', 0, 0, 'suyash');
+(4, 2, 7, 'sa', 0, 0, 'suyash'),
+(5, 1, 25, 'asas', 0, 0, 'sn');
 
 -- --------------------------------------------------------
 
@@ -134,22 +135,24 @@ CREATE TABLE IF NOT EXISTS `questions` (
   `col_id` int(6) NOT NULL,
   `username` varchar(100) NOT NULL,
   `is_answrd` int(1) NOT NULL DEFAULT '0',
-  `tag` varchar(50) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=latin1;
+  `tag` varchar(50) NOT NULL,
+  `pdate` varchar(20) NOT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `questions`
 --
 
-INSERT INTO `questions` (`id`, `u_id`, `tag_id`, `content`, `upvote`, `downvote`, `col_id`, `username`, `is_answrd`, `tag`) VALUES
-(1, 1, 1, 'is it true', 1, 1, 1, 'nahata', 1, 'hostel'),
-(2, 7, 1, 'can someone answer', 1, 0, 1, 'aa', 1, 'hostel'),
-(3, 7, 1, 'aaa', 0, 0, 1, 'lol', 0, 'sports'),
-(4, 7, 2, 'ss', 0, 0, 1, 'lol', 0, 'hostel'),
-(5, 25, 2, 'aaa', 0, 0, 1, 'sn', 0, 'sports'),
-(6, 25, 2, 'qwe', 0, 0, 1, 'sn', 0, 'hostel'),
-(7, 25, 2, 'qwe', 0, 0, 1, 'sn', 0, 'sports'),
-(8, 25, 2, 'qwqwe', 0, 0, 1, 'sn', 0, 'sports');
+INSERT INTO `questions` (`id`, `u_id`, `tag_id`, `content`, `upvote`, `downvote`, `col_id`, `username`, `is_answrd`, `tag`, `pdate`) VALUES
+(1, 1, 1, 'is it true', 1, 1, 1, 'nahata', 1, 'hostel', '09-11-2016'),
+(2, 7, 1, 'can someone answer', 1, 0, 1, 'aa', 1, 'hostel', '09-11-2016'),
+(3, 7, 1, 'aaa', 0, 0, 1, 'lol', 0, 'sports', '09-11-2016'),
+(4, 7, 2, 'ss', 0, 0, 1, 'lol', 0, 'hostel', '10-11-2016'),
+(5, 25, 2, 'aaa', 0, 0, 1, 'sn', 0, 'sports', '10-11-2016'),
+(6, 25, 2, 'qwe', 0, 0, 1, 'sn', 0, 'hostel', '11-11-2016'),
+(7, 25, 2, 'qwe', 0, 0, 1, 'sn', 0, 'sports', '11-11-2016'),
+(8, 25, 2, 'qwqwe', 0, 0, 1, 'sn', 0, 'sports', '12-11-2016'),
+(9, 25, 2, 'qwer', 0, 0, 1, 'sn', 0, 'sports', '12-11-2016');
 
 -- --------------------------------------------------------
 
@@ -169,7 +172,7 @@ CREATE TABLE IF NOT EXISTS `tags` (
 
 INSERT INTO `tags` (`id`, `name`, `assoc`) VALUES
 (1, 'hostel', 4),
-(2, 'sports', 4);
+(2, 'sports', 5);
 
 -- --------------------------------------------------------
 
@@ -215,6 +218,13 @@ CREATE TABLE IF NOT EXISTS `user_answered` (
   `u_id` int(6) NOT NULL,
   `answered` int(1) NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `user_answered`
+--
+
+INSERT INTO `user_answered` (`q_id`, `u_id`, `answered`) VALUES
+(1, 25, 1);
 
 --
 -- Indexes for dumped tables
@@ -300,7 +310,7 @@ ALTER TABLE `admin`
 -- AUTO_INCREMENT for table `answers`
 --
 ALTER TABLE `answers`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=5;
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=6;
 --
 -- AUTO_INCREMENT for table `college`
 --
@@ -320,7 +330,7 @@ ALTER TABLE `dept`
 -- AUTO_INCREMENT for table `questions`
 --
 ALTER TABLE `questions`
-  MODIFY `id` int(8) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=9;
+  MODIFY `id` int(8) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=10;
 --
 -- AUTO_INCREMENT for table `tags`
 --
