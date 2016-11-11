@@ -13,10 +13,12 @@
             <input  type="text" class="form-control"  placeholder="Add Question" ng-model = "addques.new_ques">
         </div>
         <div class="form-group">
-            <select class="form-control select-option">
-                <option ng-repeat ="val in addques.tagsList" value="{{val.id}}" ng-model="addques.getTag(val.id,val.name)">{{val.name}}</option>
+            <select class="form-control select-option" ng-options = "val as val.name for val in addques.tagsList" ng-model="item" x-ng-change = "addques.getTag(item)">
+                <!--<option ng-repeat ="val in addques.tagsList" value="{{val.id}}" ng-model ="addques.getTag(val.id)" > {{val.name}}</option>-->
+
 
             </select>
+            <!--<pre> {{item.id | json}} {{item.name | json}}</pre>-->
         </div>
         <button type="submit" class="sub-comment" ng-click="addques.addQuestion()">Submit</button>
     </form>

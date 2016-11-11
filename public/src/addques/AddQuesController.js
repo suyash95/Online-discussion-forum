@@ -1,7 +1,7 @@
 (function () {
     'use strict';
     angular.module('miniRvce')
-        .controller('AddQuesController', function($state,$rootScope, $window, $stateParams,AddQues,Tag) {
+        .controller('AddQuesController', function($scope,$state,$rootScope, $window, $stateParams,AddQues,Tag) {
             var self = this;
 
             self.user = null;
@@ -20,14 +20,17 @@
             self.col_id = $window.localStorage.getItem('cl_id');
             self.tag_id = null;
             self.tag_name = null;
+            //self.cur_val = null;
             var date = new Date();
             self.cur_date = ('0' + date.getDate()).slice(-2)  + '-' + ('0' + (date.getMonth() + 1)).slice(-2) + '-' +  date.getFullYear();
 
             var ques_data = {};
 
-            self.getTag = function(a,b){
-                self.tag_id = a;
-                self.tag_name = b;
+            self.getTag = function(){
+                self.tag_id = $scope.item.id;;
+                console.log("tag_id ",self.tag_id);
+                //console.log("cur_val ",self.cur_val);
+                self.tag_name = $scope.item.name;;
 
             };
             self.addQuestion = function () {
