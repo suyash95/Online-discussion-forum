@@ -2,7 +2,7 @@
     'use strict';
 
     angular.module('miniRvce')
-        .controller('tagListController', function($state,$http, tagList, $window, $stateParams,$rootScope){
+        .controller('tagListController', function($state,$http,Home, tagList, $window, $stateParams,$rootScope){
 
             var self = this;
 
@@ -16,6 +16,23 @@
                 }).catch(function(reason){
                     console.log('error:',reason );
                 });
+            self.update_up = function (id){
+                Home.upd_up(id)
+                    .then(function(response){
+//                        self.getall();
+                    }).catch(function(reason){
+                        console.log(reason);
+                    });
+            };
+            self.update_dw = function (id){
+                Home.upd_dw(id)
+                    .then(function(response){
+  //                      self.getall();
+                    }).catch(function(reason){
+                        console.log(reason);
+                    });
+            };
+
 
         });
 })();
