@@ -51,6 +51,12 @@
                     templateUrl: dir + 'addques/addques.tpl',
                     controller: 'AddQuesController as addques'
                 })
+
+                .state('unanswered',{
+                    url: '/unanswered',
+                    templateUrl: dir + 'unanswered/unanswered.tpl',
+                    controller: 'UnansweredController as unaswered'
+                })
             ;
 
             /*$httpProvider.interceptors.push('authInterceptor');*/

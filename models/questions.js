@@ -35,7 +35,8 @@ function fetchquestions(param,cb)
                     downvote:rows[i].downvote,
                     col_id:rows[i].col_id,
                     username:rows[i].username,
-					tag: rows[i].tag
+					tag: rows[i].tag,
+					is_answrd: rows[i].is_answrd
                 };
 				question_list.push(details);
 				i++;
@@ -65,7 +66,8 @@ function fetchbyqid(param,cb)
                     downvote:rows[0].downvote,
                     col_id:rows[0].col_id,
                     username:rows[0].username,
-					tag: rows[0].tag
+					tag: rows[0].tag,
+					is_answrd: rows[i].is_answrd
 			};
 			question_list.push(details);
 		}
@@ -96,7 +98,8 @@ function fetch(cb)
                     downvote:rows[i].downvote,
                     col_id:rows[i].col_id,
                     username:rows[i].username,
-					tag: rows[i].tag
+					tag: rows[i].tag,
+					is_answrd: rows[i].is_answrd
 			};
 			question_list.push(details);
 			i++;

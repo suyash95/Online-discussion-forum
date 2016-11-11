@@ -1,9 +1,9 @@
-<div ng-controller="HomeController as home">
+<div ng-controller="UnansweredController as unanswered">
     <div class="row row-offcanvas row-offcanvas-right">
         <div class="row">
-                <div class="col-lg-7 col-md-7 col-sm-9 col-xs-12 main col-lg-offset-2 col-md-offset-2 col-sm-offset-3">
+            <div class="col-lg-7 col-md-7 col-sm-9 col-xs-12 main col-lg-offset-2 col-md-offset-2 col-sm-offset-3">
 
-                <section ng-repeat = "ques in home.queslist" ng-if="ques.is_answrd">
+                <section ng-repeat = "ques in unanswered.queslist" ng-if="!ques.is_answrd">
 
                     <!-- question posted -->
                     <h2 class="ques" ui-sref = "question({ques_id: ques.id})">{{ques.content}}</h2>
@@ -24,30 +24,30 @@
                         <!-- total answer of the previous question -->
                         <div><a ui-sref = "question({ques_id: ques.id})">view all<span class="ans-count"> </span> answers</a></div>
                     </div>
-                    
+
 
                     <!-- show comments preferabbly 3 comments in order of like as each comment wil have like button and comment button -->
-<!--
-                    <div class="other-comments">
-                        <p class="user-comment">
-                            <span class="user">ravi_kathi</span>
-                            <span class="comment">this is very helpful. Thanks!!</span>
-                        </p>
-                        &lt;!&ndash; count of comment &ndash;&gt;
-                        <div class="comment-count">
-                            <a ui-sref = "question({ques_id: ques.id})">View all <span class="ans-no">20 </span>answers</a>
-                        </div>
-                    </div>
--->
+                    <!--
+                                        <div class="other-comments">
+                                            <p class="user-comment">
+                                                <span class="user">ravi_kathi</span>
+                                                <span class="comment">this is very helpful. Thanks!!</span>
+                                            </p>
+                                            &lt;!&ndash; count of comment &ndash;&gt;
+                                            <div class="comment-count">
+                                                <a ui-sref = "question({ques_id: ques.id})">View all <span class="ans-no">20 </span>answers</a>
+                                            </div>
+                                        </div>
+                    -->
 
                     <!-- different options related to answer like-upvote,downvote -->
                     <div class="ans-info">
 
                         <span class="ans-up">
-                            <a href="" ng-click = "home.update_up(ques.id)" ng-if = "verifiedAcc"><i class="fa fa-chevron-circle-up" aria-hidden="true"></i></a> {{ques.upvote}}
+                            <a href="" ng-click = "unanswered.update_up(ques.id)" ng-if = "verifiedAcc"><i class="fa fa-chevron-circle-up" aria-hidden="true"></i></a> {{ques.upvote}}
                         </span>|
                         <span class="ans-down">
-                            <a href="" ng-click = "home.update_dw(ques.id)" ng-if = "verifiedAcc"><i class="fa fa-chevron-circle-down" aria-hidden="true"></i></a> {{ques.downvote}}
+                            <a href="" ng-click = "unanswered.update_dw(ques.id)" ng-if = "verifiedAcc"><i class="fa fa-chevron-circle-down" aria-hidden="true"></i></a> {{ques.downvote}}
                             </span>
 
                         <span class="ans-write"><a ui-sref = "question({ques_id: ques.id})" ><i class="fa fa-pencil" aria-hidden="true"></i> Answer</a></span>
