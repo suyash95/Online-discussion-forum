@@ -6,6 +6,8 @@
 
             var self = this;
             self.tagsList = [];
+            $rootScope.verifiedAcc = $window.localStorage.getItem('vfd');
+
             Tag.getTags()
                 .then(function (response) {
                     //console.log(response);

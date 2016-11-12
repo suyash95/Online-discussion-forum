@@ -2,7 +2,7 @@
     'use strict'
 
     angular.module('miniRvce')
-        .controller('LoginController', function (Account, $state, $rootScope) {
+        .controller('LoginController', function ($window,Account, $state, $rootScope) {
             
             var self = this;
             $rootScope.isSignUp = false;
@@ -18,6 +18,7 @@
 
                         //console.log('islo', Account.isLoggedIn);
                         $rootScope.loggedIn = true;
+                        $rootScope.verifiedAcc = $window.localStorage.getItem('vfd');
                         $state.go('home');
                     }else{
                         self.Message = response.data.error;

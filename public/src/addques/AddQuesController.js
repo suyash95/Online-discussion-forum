@@ -5,6 +5,7 @@
             var self = this;
 
             self.user = null;
+            $rootScope.verifiedAcc = $window.localStorage.getItem('vfd');
 
             self.tagsList = [];
             Tag.getTags()

@@ -7,6 +7,7 @@
             var self = this;
             self.tagsList = [];
             self.queslist = [];
+            $rootScope.verifiedAcc = $window.localStorage.getItem('vfd');
 
             self.getall = function () {
                 Home.getQuestions()

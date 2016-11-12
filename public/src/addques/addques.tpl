@@ -10,7 +10,7 @@
 
     <form class="post-comment">
         <div class="form-group">
-            <input  type="text" class="form-control"  placeholder="Add Question" ng-model = "addques.new_ques">
+            <input  class="comment-box" type="text" class="form-control"  placeholder="Add Question" ng-model = "addques.new_ques">
         </div>
         <div class="form-group">
             <select class="form-control select-option" ng-options = "val as val.name for val in addques.tagsList" ng-model="item" x-ng-change = "addques.getTag(item)">
@@ -20,6 +20,6 @@
             </select>
             <!--<pre> {{item.id | json}} {{item.name | json}}</pre>-->
         </div>
-        <button type="submit" class="sub-comment" ng-click="addques.addQuestion()">Submit</button>
+        <button href="#" type="submit" class="sub-comment" ng-click="addques.addQuestion()">Submit</button>
     </form>
 </div>

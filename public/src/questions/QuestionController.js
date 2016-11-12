@@ -9,6 +9,8 @@
             self.new_answer = null;
             self.user =  null;
             self.user = $window.localStorage.getItem('user_id');
+            $rootScope.verifiedAcc = $window.localStorage.getItem('vfd');
+
             var cur_id =  self.curQuestionId;
             var curDet = function() {
                 Question.getCurDet(cur_id)

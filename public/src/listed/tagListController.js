@@ -8,6 +8,8 @@
 
             self.queslist = [] ;
             self.t_id = $stateParams.tag_id;
+            $rootScope.verifiedAcc = $window.localStorage.getItem('vfd');
+
             //console.log('tag i:', self.t_id);
             tagList.getQuestions(self.t_id)
                 .then(function(response){
