@@ -123,3 +123,24 @@ input[type="file"]:focus{
 	color:white;
 	font-size: 14px;
 }
+
+/*styles applied to comment box*/
+    .comment-box{
+		color: white;
+	}
+	.comment-box:placeholder-shown {
+ 		 color:black;
+	}
+
+	.comment-outer::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+  		color: black;
+	}
+	.comment-outer::-moz-placeholder { /* Firefox 19+ */
+	  color: black;
+	}
+	.comment-outer:-ms-input-placeholder { /* IE 10+ */
+	  color: black;
+	}
+	.comment-outer:-moz-placeholder { /* Firefox 18- */
+	  color: black;
+	}
