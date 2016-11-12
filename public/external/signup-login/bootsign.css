@@ -126,7 +126,7 @@ input[type="file"]:focus{
 
 /*styles applied to comment box*/
     .comment-box{
-		color: white;
+		color: black;
 	}
 	.comment-box:placeholder-shown {
  		 color:black;

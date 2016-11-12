@@ -38,7 +38,7 @@ gulp.task('minify-css', function() {
 });
 
 gulp.task('minify-js', function() {
-    gulp.src(['./public/src/*.js','./public/src/**/*.js','./public/src/user/**/*.js','./public/src/user/**/**/*.js','./public/external/**/*.js'])
+    gulp.src(['./public/src/*.js','./public/src/**/*.js','./public/src/user/**/*.js','./public/src/user/**/**/*.js'])
         .pipe(concat('app.js'))
         .pipe(ngAnnotate())
         .pipe(uglify())
