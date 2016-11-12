@@ -9,8 +9,8 @@
 -->
 
     <form class="post-comment">
-        <div class="form-group">
-            <input  class="comment-box" type="text" class="form-control"  placeholder="Add Question" ng-model = "addques.new_ques">
+        <div class="form-control comment-outer">
+            <input  class="inp-comment comment-box" type="text" class="form-control"  placeholder="Add Question" ng-model = "addques.new_ques">
         </div>
         <div class="form-group">
             <select class="form-control select-option" ng-options = "val as val.name for val in addques.tagsList" ng-model="item" x-ng-change = "addques.getTag(item)">
