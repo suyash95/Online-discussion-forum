@@ -82,7 +82,7 @@
 -->
 
     <form class="post-comment">
-        <div class="form-control comment-outer">
+        <div class="comment-outer">
             <input type="text" class="inp-comment comment-box" placeholder="Enter Answer" ng-model = "question.new_answer">
         </div>
         <button type="submit" class="sub-comment" ng-click="question.addAnswer()">Submit</button>
