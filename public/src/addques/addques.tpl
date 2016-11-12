@@ -9,7 +9,7 @@
 -->
 
     <form class="post-comment">
-        <div class="form-control comment-outer">
+        <div class="comment-outer">
             <input  class="inp-comment comment-box" type="text" class="form-control"  placeholder="Add Question" ng-model = "addques.new_ques">
         </div>
         <div class="form-group">
