@@ -20,7 +20,8 @@
     "step": "^0.0.6 ",
     "async": "^2.0.1",
     "lodash": "^3.10.0",
-    "ejs": "~2.5.2"
+    "ejs": "~2.5.2",
+    "cors": "~2.8.1"
   },
   "apidoc": {
     "title": "Custom apiDoc browser title",

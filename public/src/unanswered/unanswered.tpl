@@ -44,10 +44,10 @@
                     <div class="ans-info">
 
                         <span class="ans-up">
-                            <a href="" ng-click = "unanswered.update_up(ques.id)" ng-if = "verifiedAcc"><i class="fa fa-chevron-circle-up" aria-hidden="true"></i></a> {{ques.upvote}}
+                            <a href="" ng-click = "unanswered.update_up(ques.id)"><i class="fa fa-chevron-circle-up" aria-hidden="true"></i></a> {{ques.upvote}}
                         </span>|
                         <span class="ans-down">
-                            <a href="" ng-click = "unanswered.update_dw(ques.id)" ng-if = "verifiedAcc"><i class="fa fa-chevron-circle-down" aria-hidden="true"></i></a> {{ques.downvote}}
+                            <a href="" ng-click = "unanswered.update_dw(ques.id)"><i class="fa fa-chevron-circle-down" aria-hidden="true"></i></a> {{ques.downvote}}
                             </span>
 
                         <span class="ans-write"><a ui-sref = "question({ques_id: ques.id})" ><i class="fa fa-pencil" aria-hidden="true"></i> Answer</a></span>

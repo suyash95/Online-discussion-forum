@@ -9,6 +9,7 @@ var expressJwt = require('express-jwt');
 var cfg = require('./config');
 var step = require('step');
 var async = require('async');
+var cors = require('cors');
 
 var routes = require('./routes/index');
 var users = require('./routes/users');

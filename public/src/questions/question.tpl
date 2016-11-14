@@ -60,14 +60,19 @@
         <div class="ans-info">
 
                         <span class="ans-up">
-                            <a href="" ng-click = "question.update_up(ans.id)" ng-if = "verifiedAcc"><i class="fa fa-chevron-circle-up" aria-hidden="true"></i></a> {{ans.upvote}}
+                            <a href="" ng-click = "question.update_up(ans.id)" ><i class="fa fa-chevron-circle-up" aria-hidden="true"></i></a> {{ans.upvote}}
                         </span>|
                         <span class="ans-down">
-                            <a href="" ng-click = "question.update_dw(ans.id)" ng-if = "verifiedAcc" ><i class="fa fa-chevron-circle-down" aria-hidden="true"></i></a> {{ans.downvote}}
+                            <a href="" ng-click = "question.update_dw(ans.id)"  ><i class="fa fa-chevron-circle-down" aria-hidden="true"></i></a> {{ans.downvote}}
                             </span>
+            <div class="ques-info">
+                        <span class="ques-user">
+                            <i class="fa fa-user-o" aria-hidden="true"></i> {{ans.username}}
+                        </span
 
-            <span class="ans-write"><a ui-sref = "question({ques_id: ques.id})" ><i class="fa fa-pencil" aria-hidden="true"></i> Answer</a></span>
-
+            </div>
+            <!--<span class="ans-write"><a ui-sref = "question({ques_id: ques.id})" ><i class="fa fa-pencil" aria-hidden="true"></i> Answer</a></span>
+-->
             <!--<span class="ans-comment"><a role="button" data-toggle="collapse" href="#write-comment" aria-expanded="false" aria-controls="write-comment"><i class="fa fa-comment-o" aria-hidden="true"></i> Comment</a></span>-->
 
             <span class="ans-report"><a href="" data-toggle="tooltip" data-placement="top" title="Ban this Quesion"><i class="fa fa-ban" aria-hidden="true"></i> Report</a></span>

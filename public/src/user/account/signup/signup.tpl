@@ -2,7 +2,7 @@
   <div class="vertical-align-center">
 
     <!-- outer box -->
-    <div ng-controller="SignUpController as signup" class="gradient col-lg-4 col-md-4 col-sm-6 col-xs-10 col-lg-offset-4 col-md-offset-4 col-sm-offset-3  col-xs-offset-1">
+    <div ng-controller="SignUpController as signup" class="gradient col-lg-12 col-md-8 col-sm-12 col-xs-12 col-lg-offset-0 col-md-offset-2 col-sm-offset-0  col-xs-offset-0">
 
 
       <div class="col-lg-8 col-md-10 col-sm-10 col-xs-10 col-lg-offset-2 col-md-offset-1 col-sm-offset-1 col-xs-offset-1">
@@ -74,11 +74,13 @@
             </select>
           </div>
 
-          <!--upload id card-->
+<!--
+          &lt;!&ndash;upload id card&ndash;&gt;
           <div class="form-group form-custom-file">
             <input type="file" class="form-control-custom" id="inputId">
           </div>
           <span class="help-block">Upload ID Card Photo</span><br>
+-->
 
           <!-- checkbox remember me -->
           <div class="checkbox">

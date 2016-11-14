@@ -10,7 +10,9 @@ left:0; */
   bottom: 0;
   padding-right: 0px !important;
   background: #34393d;
-  height: 100%; }
+  /*height: 100%;
+  height:100vh;*/
+}
 
 .right {
   position: absolute;
