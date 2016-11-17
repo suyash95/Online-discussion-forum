@@ -22,6 +22,7 @@
                         console.log(reason);
                     });
             };
+
             curDet();
             var upd = function() {
                 Question.getAnswers(self.curQuestionId)

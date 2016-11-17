@@ -31,7 +31,7 @@ function getanswers(param,cb)
                     upvote:rows[i].upvote,
                     downvote:rows[i].downvote,
                     username : rows[i].username,
-                    //comment_count:comment_count
+                    comment_count:rows[i].comment_count
                 };
 				answers_list.push(details);
 				i++;

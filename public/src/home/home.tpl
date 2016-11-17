@@ -20,25 +20,27 @@
 
                     <!-- most upvoted answer-->
                     <div class="ans">
-                        <!--<p>I heard that the results will come out on 15 September but i'm not sure. As of now, nothing has been heard from the administrative block.</p>-->
+                        <p>{{ques.topAns.$$state.value.content}}</p>
                         <!-- total answer of the previous question -->
-                        <div><a ui-sref = "question({ques_id: ques.id})">view all<span class="ans-count"> </span> answers</a></div>
+                        <div><a ui-sref = "question({ques_id: ques.id})">view all<span class="ans-count"> {{ques.is_answrd}} </span> answers</a></div>
+
+
+<!--                        <div><a ui-sref = "question({ques_id: ques.id})">view all<span class="ans-count"> {{ques.topAns.$$state.value.comment_count}} </span> comments</a></div>-->
                     </div>
                     
 
                     <!-- show comments preferabbly 3 comments in order of like as each comment wil have like button and comment button -->
-<!--
-                    <div class="other-comments">
-                        <p class="user-comment">
-                            <span class="user">ravi_kathi</span>
-                            <span class="comment">this is very helpful. Thanks!!</span>
+                    <div class="other-comments" ng-if = "ques.topAns.$$state.value.comment_count">
+                        <p class="user-comment" ng-repeat = "com in ques.topAns.$$state.value.topCom">
+                            <span class="user">{{com.uname}}</span>
+                            <span class="comment">{{com.content}}</span>
                         </p>
-                        &lt;!&ndash; count of comment &ndash;&gt;
+                        <!-- count of comment -->
                         <div class="comment-count">
-                            <a ui-sref = "question({ques_id: ques.id})">View all <span class="ans-no">20 </span>answers</a>
+                            <a ui-sref = "question({ques_id: ques.id})">view all<span class="ans-count">
+                                {{ques.topAns.$$state.value.comment_count}} </span> comments</a>
                         </div>
                     </div>
--->
 
                     <!-- different options related to answer like-upvote,downvote -->
                     <div class="ans-info">
