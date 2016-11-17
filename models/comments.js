@@ -56,7 +56,7 @@ function storecomments(param,cb)
 				}
 				else{
 					cb(rows[0]);
-					callback(null,query1);
+					callback(null);
 				}
 			});
 		},
@@ -71,10 +71,11 @@ function storecomments(param,cb)
 				}
 				else{
 					console.log("query1 done");
-					var comm= rows[0].comment_count;
-					console.log(comm);
-					comm =comm+1;
-					callback(null,comm);
+					var a = rows[0].comment_count;
+					//console.log(a);
+					a = a+1;
+					console.log(a);
+					callback(null,a);
 				}
 			});
 		},
