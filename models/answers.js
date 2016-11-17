@@ -44,10 +44,11 @@ function getanswers(param,cb)
 function addanswers(param,cb)
 {
 	console.log(param.u_id);
-	var query= "Insert into answers values (?,?,?,?,?,?,?)";
+	var query= "Insert into answers values (?,?,?,?,?,?,?,?)";
 
 	var uid = "select name from user where id = '"+(param.u_id)+"';"
-    var query1 = "update questions SET is_answrd = 1 where id = '"+param.q_id+"';"
+    //var query1 = "update questions SET is_answrd = 1 where id = '"+param.q_id+"';"
+    var query1 = "select  is_answrd from  questions where id = '"+param.q_id+"';"
     var query2 = "Insert into user_answered values (?,?,?)";
 
 	async.waterfall([
@@ -61,6 +62,7 @@ function addanswers(param,cb)
             }
             else{
                 console.log('query executed for uid');
+                //console.log(rows[0].name);
                 var u = rows[0].name;
                 callback(null,u);
         }
@@ -69,7 +71,7 @@ function addanswers(param,cb)
 
     function(u,callback){
         console.log("\n\n\n\n",u);
-    	var value=[0,param.q_id,param.u_id,param.contents,0,0,u];
+    	var value=[0,param.q_id,param.u_id,param.contents,0,0,u,0];
     	connection.query(query,value,function(err,rows){
     		if(err)
     		{
@@ -95,12 +97,32 @@ function addanswers(param,cb)
             }
             else{
                 console.log('query1 is done');
-                //cb(rows[0]);
-                callback(null,query2);
+                var a=rows[0].is_answrd;
+                a=a+1;
+                callback(null,a);
         } 
          
         });
     },
+
+    function(a,callback)
+        {
+            var query3 = "update questions set is_answrd = '" + a + "' where id = '"+param.q_id+"';"
+            connection.query(query3,function(err,rows){
+                if(err)
+                {
+                    console.log("error");
+                    cb(null,err);
+                    return callback(err)
+                }
+                else{
+                    console.log("updated done");
+                    //var col= rows[0].id;
+                    callback(null,query2);
+                }
+            });
+        },
+
     function(callback)
     {
         console.log('yahan aaya');
