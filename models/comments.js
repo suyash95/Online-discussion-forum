@@ -25,6 +25,7 @@ function fetchcomments(param,cb)
 			i=0;
 			while(i<rows.length){
 				var details={
+					id:rows[i].id,
 					ans_id : rows[i].ans_id,
 					u_id :rows[i].u_id,
 					content:rows[i].content
@@ -41,44 +42,9 @@ function storecomments(param,cb)
 {
 	console.log(param);
 	var query = "Insert into comments values(?,?,?,?)";
-	/*var uid = "select id from user where id = '"+(param.u_id)+"';"
-	var ansid = "select id from answers where id = '"+(param.ans_id)+"';"*/
-
+	var query1 = "select comment_count from answers where id = '"+param.ans_id+"';"
 	async.waterfall([
-		/*function(callback)
-		{
-			connection.query(ansid,function(err,rows){
-				if(err)
-				{
-					console.log("error");
-					cb(null,err);
-					return callback(err)
-				}
-				else{
-					console.log("ansid wala query executed ");
-					var ans = rows[0].id;
-					callback(null,ans);
-				}
-			});
-		},
-		function(ans,callback)
-		{
-			connection.query(uid,function(err,rows){
-				if(err)
-				{
-					console.log("error");
-					cb(null,err);
-					return callback(err)
-				}
-				else{
-					console.log("uid wala query executed ");
-					var u = rows[0].id;
-					callback(null,u,ans);
-				}
-			});
-		},*/
-
-		function(u,ans,callback)
+		function(callback)
 		{
 			var value=[0,param.ans_id,param.u_id,param.contents];
 			connection.query(query,value,function(err,rows){
@@ -90,9 +56,47 @@ function storecomments(param,cb)
 				}
 				else{
 					cb(rows[0]);
+					callback(null,query1);
 				}
 			});
-		}
+		},
+		function(callback)
+		{
+			connection.query(query1,function(err,rows){
+				if(err)
+				{
+					console.log("error");
+					cb(null,err);
+					return callback(err)
+				}
+				else{
+					console.log("query1 done");
+					var comm= rows[0].comment_count;
+					console.log(comm);
+					comm =comm+1;
+					callback(null,comm);
+				}
+			});
+		},
+
+		function(a,callback)
+		{
+			var query2 = "update answers set comment_count= '" + a + "' where id = '"+param.ans_id+"';"
+			connection.query(query2,function(err,rows){
+				if(err)
+				{
+					console.log("error");
+					cb(null,err);
+					return callback(err)
+				}
+				else{
+					console.log("updated done");
+					//var col= rows[0].id;
+					//callback(null);
+				}
+			});
+		}		
+
          ],
 		function(err)
 		{
