@@ -45,7 +45,8 @@ router.post('/',function(req,res,next){
 	var details ={
 		ans_id:req.body.ans_id,
 		u_id :req.body.u_id,
-		contents : req.body.contents
+		contents : req.body.contents,
+		uname: req.body.uname
 	};
 
 	comments.storecomments(details,function(err,comments){

@@ -69,7 +69,7 @@
                 <p class="user-comment" ng-repeat = "comm in comment.commentList">
 
                     <span class="user">{{comm.uname}}</span>
-                    <span class="comment">{{comm.contents}}</span>
+                    <span class="comment">{{comm.content}}</span>
 
                 </p>
 

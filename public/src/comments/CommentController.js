@@ -8,7 +8,7 @@
             self.user =  null;
             self.user = $window.localStorage.getItem('user_id');
             $rootScope.verifiedAcc = $window.localStorage.getItem('vfd');
-            self.u_name = $window.localStorage.getItem('name');
+            self.uname = $window.localStorage.getItem('name');
             self.new_comment = null;
             self.cur_a_id = null;
 
@@ -23,16 +23,16 @@
             };
             //self.upd(self.cur_a_id);
 
-            self.addComment = function (){
+            self.addComment = function (a_id){
                 var com_data = {
                     u_id: self.user,
-                    ans_id: self.cur_a_id,
+                    ans_id: a_id,
                     contents: self.new_comment,
-                    u_name: self.u_name
+                    uname: self.uname
                 };
                 Comment.postComm(com_data)
                     .then((function(response){
-                        self.upd(self.cur_a_id);
+                        self.upd(a_id);
                     })).catch(function(reason){
                         console.log("Error in posting comment: ",reason);
                     });

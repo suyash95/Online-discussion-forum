@@ -28,7 +28,8 @@ function fetchcomments(param,cb)
 					id:rows[i].id,
 					ans_id : rows[i].ans_id,
 					u_id :rows[i].u_id,
-					content:rows[i].content
+					content:rows[i].content,
+					uname: rows[i].uname
 				};
 				comment.push(details);
 				i++;
@@ -41,12 +42,12 @@ function fetchcomments(param,cb)
 function storecomments(param,cb)
 {
 	console.log(param);
-	var query = "Insert into comments values(?,?,?,?)";
+	var query = "Insert into comments values(?,?,?,?,?)";
 	var query1 = "select comment_count from answers where id = '"+param.ans_id+"';"
 	async.waterfall([
 		function(callback)
 		{
-			var value=[0,param.ans_id,param.u_id,param.contents];
+			var value=[0,param.ans_id,param.u_id,param.contents,param.uname];
 			connection.query(query,value,function(err,rows){
 				if(err)
 				{
