@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 11, 2016 at 09:53 PM
+-- Generation Time: Nov 17, 2016 at 06:20 PM
 -- Server version: 5.6.25
 -- PHP Version: 5.6.11
 
@@ -55,18 +55,19 @@ CREATE TABLE IF NOT EXISTS `answers` (
   `content` longtext NOT NULL,
   `upvote` int(6) NOT NULL DEFAULT '0',
   `downvote` int(6) NOT NULL DEFAULT '0',
-  `username` varchar(100) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
+  `username` varchar(100) NOT NULL,
+  `comment_count` int(5) NOT NULL DEFAULT '0'
+) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `answers`
 --
 
-INSERT INTO `answers` (`id`, `q_id`, `u_id`, `content`, `upvote`, `downvote`, `username`) VALUES
-(2, 1, 1, 'hey !!!! its working', 1, 1, ''),
-(3, 2, 7, 'a', 0, 0, 'suyash'),
-(4, 2, 7, 'sa', 0, 0, 'suyash'),
-(5, 1, 25, 'asas', 0, 0, 'sn');
+INSERT INTO `answers` (`id`, `q_id`, `u_id`, `content`, `upvote`, `downvote`, `username`, `comment_count`) VALUES
+(9, 15, 25, 'the project can be submitted by monday .  We have to show the implementation also.', 0, 0, 'sn', 0),
+(10, 16, 25, 'It is going to be global healthcare system. Prepare well.', 1, 0, 'sn', 0),
+(11, 20, 26, 'Around 200 are placed in CSE.', 2, 0, 'Shreyansh Nahata', 0),
+(12, 21, 26, 'I’ve worked with Angular on quite a few apps at this point, and have seen many different ways to structure them. I’m writing a book on architecting Angular apps right now with the MEAN stack and as such have researched heavily into this specific topic. I think I’ve set on a pretty specific structure I’m very happy with. It’s a simpler approach than what Burke Holland has proposed. I must note that if I was on a project with his structure, I would be content. It’s good. Before we start though, the concept of modules in the world of Angular can be a bit confusing, so let me lay out the current state of affairs. What modules are in JavaScript JavaScript comes with no ability to load modules. A “module” means different things to different people. For this article, let’s use this definition: Modules allow code to be compartmentalized to provide logical separation for the developers. In JavaScript, it also prevents the problem of conflicting globals. People new to JavaScript get a little confused about why we make such a big deal about modules. I want to make one thing clear: Modules are NOT for lazy-loading JavaScript components when needed. Require.js does have this functionality, but that is not the reason it is important. Modules are important due to the language not having support for it, and JavaScript desperately needing it. A module can be different things.', 5, 1, 'Shreyansh Nahata', 0);
 
 -- --------------------------------------------------------
 
@@ -137,22 +138,21 @@ CREATE TABLE IF NOT EXISTS `questions` (
   `is_answrd` int(1) NOT NULL DEFAULT '0',
   `tag` varchar(50) NOT NULL,
   `pdate` varchar(20) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=23 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `questions`
 --
 
 INSERT INTO `questions` (`id`, `u_id`, `tag_id`, `content`, `upvote`, `downvote`, `col_id`, `username`, `is_answrd`, `tag`, `pdate`) VALUES
-(1, 1, 1, 'is it true', 1, 1, 1, 'nahata', 1, 'hostel', '09-11-2016'),
-(2, 7, 1, 'can someone answer', 1, 0, 1, 'aa', 1, 'hostel', '09-11-2016'),
-(3, 7, 1, 'aaa', 0, 0, 1, 'lol', 0, 'sports', '09-11-2016'),
-(4, 7, 2, 'ss', 0, 0, 1, 'lol', 0, 'hostel', '10-11-2016'),
-(5, 25, 2, 'aaa', 0, 0, 1, 'sn', 0, 'sports', '10-11-2016'),
-(6, 25, 2, 'qwe', 0, 0, 1, 'sn', 0, 'hostel', '11-11-2016'),
-(7, 25, 2, 'qwe', 0, 0, 1, 'sn', 0, 'sports', '11-11-2016'),
-(8, 25, 2, 'qwqwe', 0, 0, 1, 'sn', 0, 'sports', '12-11-2016'),
-(9, 25, 2, 'qwer', 0, 0, 1, 'sn', 0, 'sports', '12-11-2016');
+(15, 26, 3, 'when do we need to submit mini project?', 5, 1, 1, 'Shreyansh Nahata', 1, 'CSE', '12-11-2016'),
+(16, 26, 4, 'What is the hackathon theme?', 3, 0, 1, 'Shreyansh Nahata', 1, 'ISE', '12-11-2016'),
+(17, 25, 1, 'When will night football start?', 2, 0, 1, 'sn', 0, 'hostel', '12-11-2016'),
+(18, 25, 2, 'How many teams are there in Festhos ?', 2, 1, 1, 'sn', 0, 'sports', '12-11-2016'),
+(19, 25, 9, 'Is there any seminar on friday in bio tech dept. ?', 0, 0, 1, 'sn', 0, 'Bio-Tech', '12-11-2016'),
+(20, 25, 3, 'How many students are placed in cse?', 4, 0, 1, 'sn', 1, 'CSE', '12-11-2016'),
+(21, 25, 10, 'Any guidelines for angularJs implementation ?', 3, 0, 1, 'sn', 1, 'General', '12-11-2016'),
+(22, 25, 10, 'Is tomorrow a holiday?', 0, 0, 1, 'sn', 0, 'General', '15-11-2016');
 
 -- --------------------------------------------------------
 
@@ -164,15 +164,23 @@ CREATE TABLE IF NOT EXISTS `tags` (
   `id` int(4) NOT NULL,
   `name` varchar(20) NOT NULL,
   `assoc` int(6) NOT NULL DEFAULT '0'
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `tags`
 --
 
 INSERT INTO `tags` (`id`, `name`, `assoc`) VALUES
-(1, 'hostel', 4),
-(2, 'sports', 5);
+(1, 'hostel', 1),
+(2, 'sports', 1),
+(3, 'CSE', 2),
+(4, 'ISE', 1),
+(5, 'Mechanical', 0),
+(6, 'ECE', 0),
+(7, 'EEE', 0),
+(8, 'Telecom', 0),
+(9, 'Bio-Tech', 1),
+(10, 'General', 2);
 
 -- --------------------------------------------------------
 
@@ -191,7 +199,7 @@ CREATE TABLE IF NOT EXISTS `user` (
   `phone` int(10) NOT NULL,
   `type` int(1) NOT NULL,
   `verified` int(1) NOT NULL DEFAULT '0'
-) ENGINE=InnoDB AUTO_INCREMENT=26 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=27 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `user`
@@ -205,7 +213,8 @@ INSERT INTO `user` (`id`, `dept_id`, `col_id`, `name`, `usn`, `email`, `password
 (15, 1, 1, 'suyash', '100', 'raan@gmail.com', 'a85ce36495072b8c9f50170cb7eb0ab7ab49a949436b92222d9af1967c14', 1234, 0, 0),
 (16, 1, 1, 'suyash', '144', 'raan@gmail.com', 'a85ce36495072b8c9f50170cb7eb0ab7ab49a949436b92222d9af1967c14', 1234, 0, 0),
 (24, 1, 1, 'a', 'a', 'a', '49efe23ca1be72cbfc8f7f87a4ef642b7abe87631f8fdac90e138962080c', 1, 0, 0),
-(25, 1, 1, 'sn', 'sn', 'sn@sn.sn', '8b04e39628a5ff5acfe917ee58554c34a71dde2fd47ad0a14fd71bf4f9ed', 99, 1, 0);
+(25, 1, 1, 'sn', 'sn', 'sn@sn.sn', '8b04e39628a5ff5acfe917ee58554c34a71dde2fd47ad0a14fd71bf4f9ed', 99, 1, 1),
+(26, 1, 1, 'Shreyansh Nahata', '1RV13CS148', 'shreyans4nahata@gmail.com', '019fd28766dcd375ad8694a51f191e905005a53792979dab4e985fd4b3d2', 2147483647, 1, 1);
 
 -- --------------------------------------------------------
 
@@ -224,7 +233,10 @@ CREATE TABLE IF NOT EXISTS `user_answered` (
 --
 
 INSERT INTO `user_answered` (`q_id`, `u_id`, `answered`) VALUES
-(1, 25, 1);
+(15, 25, 1),
+(16, 25, 1),
+(20, 26, 1),
+(21, 26, 1);
 
 --
 -- Indexes for dumped tables
@@ -310,7 +322,7 @@ ALTER TABLE `admin`
 -- AUTO_INCREMENT for table `answers`
 --
 ALTER TABLE `answers`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=6;
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=13;
 --
 -- AUTO_INCREMENT for table `college`
 --
@@ -330,17 +342,17 @@ ALTER TABLE `dept`
 -- AUTO_INCREMENT for table `questions`
 --
 ALTER TABLE `questions`
-  MODIFY `id` int(8) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=10;
+  MODIFY `id` int(8) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=23;
 --
 -- AUTO_INCREMENT for table `tags`
 --
 ALTER TABLE `tags`
-  MODIFY `id` int(4) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
+  MODIFY `id` int(4) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=11;
 --
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `id` int(8) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=26;
+  MODIFY `id` int(8) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=27;
 --
 -- Constraints for dumped tables
 --
