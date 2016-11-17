@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 17, 2016 at 06:20 PM
+-- Generation Time: Nov 17, 2016 at 09:12 PM
 -- Server version: 5.6.25
 -- PHP Version: 5.6.11
 
@@ -57,17 +57,18 @@ CREATE TABLE IF NOT EXISTS `answers` (
   `downvote` int(6) NOT NULL DEFAULT '0',
   `username` varchar(100) NOT NULL,
   `comment_count` int(5) NOT NULL DEFAULT '0'
-) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `answers`
 --
 
 INSERT INTO `answers` (`id`, `q_id`, `u_id`, `content`, `upvote`, `downvote`, `username`, `comment_count`) VALUES
-(9, 15, 25, 'the project can be submitted by monday .  We have to show the implementation also.', 0, 0, 'sn', 0),
+(9, 15, 25, 'the project can be submitted by monday .  We have to show the implementation also.', 0, 0, 'sn', 1),
 (10, 16, 25, 'It is going to be global healthcare system. Prepare well.', 1, 0, 'sn', 0),
 (11, 20, 26, 'Around 200 are placed in CSE.', 2, 0, 'Shreyansh Nahata', 0),
-(12, 21, 26, 'I’ve worked with Angular on quite a few apps at this point, and have seen many different ways to structure them. I’m writing a book on architecting Angular apps right now with the MEAN stack and as such have researched heavily into this specific topic. I think I’ve set on a pretty specific structure I’m very happy with. It’s a simpler approach than what Burke Holland has proposed. I must note that if I was on a project with his structure, I would be content. It’s good. Before we start though, the concept of modules in the world of Angular can be a bit confusing, so let me lay out the current state of affairs. What modules are in JavaScript JavaScript comes with no ability to load modules. A “module” means different things to different people. For this article, let’s use this definition: Modules allow code to be compartmentalized to provide logical separation for the developers. In JavaScript, it also prevents the problem of conflicting globals. People new to JavaScript get a little confused about why we make such a big deal about modules. I want to make one thing clear: Modules are NOT for lazy-loading JavaScript components when needed. Require.js does have this functionality, but that is not the reason it is important. Modules are important due to the language not having support for it, and JavaScript desperately needing it. A module can be different things.', 5, 1, 'Shreyansh Nahata', 0);
+(12, 21, 26, 'I’ve worked with Angular on quite a few apps at this point, and have seen many different ways to structure them. I’m writing a book on architecting Angular apps right now with the MEAN stack and as such have researched heavily into this specific topic. I think I’ve set on a pretty specific structure I’m very happy with. It’s a simpler approach than what Burke Holland has proposed. I must note that if I was on a project with his structure, I would be content. It’s good. Before we start though, the concept of modules in the world of Angular can be a bit confusing, so let me lay out the current state of affairs. What modules are in JavaScript JavaScript comes with no ability to load modules. A “module” means different things to different people. For this article, let’s use this definition: Modules allow code to be compartmentalized to provide logical separation for the developers. In JavaScript, it also prevents the problem of conflicting globals. People new to JavaScript get a little confused about why we make such a big deal about modules. I want to make one thing clear: Modules are NOT for lazy-loading JavaScript components when needed. Require.js does have this functionality, but that is not the reason it is important. Modules are important due to the language not having support for it, and JavaScript desperately needing it. A module can be different things.', 5, 1, 'Shreyansh Nahata', 0),
+(13, 15, 25, 'aaa', 0, 0, 'sn', 0);
 
 -- --------------------------------------------------------
 
@@ -98,8 +99,16 @@ CREATE TABLE IF NOT EXISTS `comments` (
   `id` int(10) NOT NULL,
   `ans_id` int(10) NOT NULL,
   `u_id` int(8) NOT NULL,
-  `content` mediumtext NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `content` mediumtext NOT NULL,
+  `uname` varchar(50) NOT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `comments`
+--
+
+INSERT INTO `comments` (`id`, `ans_id`, `u_id`, `content`, `uname`) VALUES
+(1, 9, 25, 'aaa', 'sn');
 
 -- --------------------------------------------------------
 
@@ -145,7 +154,7 @@ CREATE TABLE IF NOT EXISTS `questions` (
 --
 
 INSERT INTO `questions` (`id`, `u_id`, `tag_id`, `content`, `upvote`, `downvote`, `col_id`, `username`, `is_answrd`, `tag`, `pdate`) VALUES
-(15, 26, 3, 'when do we need to submit mini project?', 5, 1, 1, 'Shreyansh Nahata', 1, 'CSE', '12-11-2016'),
+(15, 26, 3, 'when do we need to submit mini project?', 5, 1, 1, 'Shreyansh Nahata', 2, 'CSE', '12-11-2016'),
 (16, 26, 4, 'What is the hackathon theme?', 3, 0, 1, 'Shreyansh Nahata', 1, 'ISE', '12-11-2016'),
 (17, 25, 1, 'When will night football start?', 2, 0, 1, 'sn', 0, 'hostel', '12-11-2016'),
 (18, 25, 2, 'How many teams are there in Festhos ?', 2, 1, 1, 'sn', 0, 'sports', '12-11-2016'),
@@ -236,7 +245,8 @@ INSERT INTO `user_answered` (`q_id`, `u_id`, `answered`) VALUES
 (15, 25, 1),
 (16, 25, 1),
 (20, 26, 1),
-(21, 26, 1);
+(21, 26, 1),
+(15, 25, 1);
 
 --
 -- Indexes for dumped tables
@@ -322,7 +332,7 @@ ALTER TABLE `admin`
 -- AUTO_INCREMENT for table `answers`
 --
 ALTER TABLE `answers`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=13;
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=14;
 --
 -- AUTO_INCREMENT for table `college`
 --
@@ -332,7 +342,7 @@ ALTER TABLE `college`
 -- AUTO_INCREMENT for table `comments`
 --
 ALTER TABLE `comments`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT for table `dept`
 --
