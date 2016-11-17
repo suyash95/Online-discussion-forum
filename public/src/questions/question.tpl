@@ -33,29 +33,6 @@
 
         </div>
 
-        <!-- comments related to this answer -->
-        <!--<div class="other-comments">
-            <p class="user-comment">
-                <span class="user">ravi_kathi</span>
-                <span class="comment">this is very helpful. Thanks!!</span>
-            </p>
-            <p class="user-comment">
-                <span class="user">suyash_singh_gaur</span>
-                <span class="comment">I talked to them they said it will come out on 16 sep</span>
-            </p>
-            <p class="user-comment">
-                <span class="user">shreyans_nahata</span>
-                <span class="comment">Why don't they just confirm the date</span>
-            </p>
-            <p class="user-comment">
-                <span class="user">sumit_narang</span>
-                <span class="comment">It's 7 sem does it even matter<span>
-            </p>
-            <div class="comment-count">
-                <a href="">View all <span class="ans-no">20 </span>answers</a>
-            </div>
-        </div>
--->
         <!-- upvote,downvote,comment,report for each answer -->
         <div class="ans-info">
 
@@ -71,6 +48,9 @@
                         </span
 
             </div>
+
+
+
             <!--<span class="ans-write"><a ui-sref = "question({ques_id: ques.id})" ><i class="fa fa-pencil" aria-hidden="true"></i> Answer</a></span>
 -->
             <!--<span class="ans-comment"><a role="button" data-toggle="collapse" href="#write-comment" aria-expanded="false" aria-controls="write-comment"><i class="fa fa-comment-o" aria-hidden="true"></i> Comment</a></span>-->
@@ -78,13 +58,36 @@
             <span class="ans-report"><a href="" data-toggle="tooltip" data-placement="top" title="Ban this Quesion"><i class="fa fa-ban" aria-hidden="true"></i> Report</a></span>
         </div>
 
+        <!-- comments related to this answer -->
+        <div class="other-comments" ng-controller = "CommentController as comment" >
+
+            <div>
+                <div class="comment-count">
+                    <a ng-click = "comment.upd(ans.id)"  >View all Comments</a>
+                </div>
+
+                <p class="user-comment" ng-repeat = "comm in comment.commentList">
+
+                    <span class="user">{{comm.uname}}</span>
+                    <span class="comment">{{comm.contents}}</span>
+
+                </p>
+
+            </div>
+
+            <form class="post-comment">
+
+                <div class="comment-outer">
+                    <input type="text" class="inp-comment comment-box" placeholder="Enter Comment" ng-model = "comment.new_comment">
+                </div>
+                <button class="sub-comment" type="submit" ng-click="comment.addComment(ans.id)">Submit Comment</button>
+
+            </form>
+        </div>
+
 
     </section>
-<!--
-    <label for="answer" class="sr-only">Write answer</label>
-    <input type="text" name="answer" class="form-control" ng-model = "question.new_answer">
-    <button class="btn btn-lg btn-primary btn-block" type="submit" ng-click="question.addAnswer()">Submit answer</button>
--->
+
 
     <form class="post-comment">
         <div class="comment-outer">
