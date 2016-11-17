@@ -12,7 +12,8 @@ connection.connect(function(err){
 function getanswers(param,cb)
 {
 	//console.log(param);
-	var query = "select * from answers where q_id = "+param+";"
+	//var query = "select * from answers where q_id = "+param+";"
+    var query ="SELECT * FROM answers where q_id = "+param+" ORDER BY answers . upvote DESC";
 	connection.query(query,function(err,rows){
 		if(err){
 			console.log(err);
@@ -29,7 +30,8 @@ function getanswers(param,cb)
                     content:rows[i].content,
                     upvote:rows[i].upvote,
                     downvote:rows[i].downvote,
-                    username : rows[i].username
+                    username : rows[i].username,
+                    //comment_count:comment_count
                 };
 				answers_list.push(details);
 				i++;
