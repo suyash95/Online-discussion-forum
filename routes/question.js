@@ -60,6 +60,7 @@ router.get('/popular',function(req,res,next)
 	});
 });
 
+
 router.get('/qid',function(req,res,next){
 	questions.fetchbyqid(req.query.q_id,function(err,questions){
 		if(err)

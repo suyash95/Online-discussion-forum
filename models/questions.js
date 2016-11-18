@@ -16,7 +16,7 @@ function fetchquestions(param,cb)
 {
 	//param = parseInt(param);
 	console.log(param);
-	var query = "select * from questions where tag_id = "+param+";"
+	var query = "select * from questions where tag_id = "+param+" ORDER BY pdate DESC";
 	connection.query(query,function(err,rows){
 		if(err){
 			console.log(err);
@@ -80,6 +80,8 @@ function popular(cb)
 	}
 });
 }
+
+
 
 function fetchbyqid(param,cb)
 {
