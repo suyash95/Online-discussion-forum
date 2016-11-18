@@ -45,6 +45,20 @@ router.get('/',function(req,res,next)
  *
  *@apiSuccess {string} questions posted successfully.
 */
+router.get('/popular',function(req,res,next)
+{
+	//var tag_id=req.headers.tag_id;
+	//console.log(req);
+	questions.popular(function(err,questions){
+		if(err)
+		{
+			console.log("error hai");
+			res.json({error:err});
+		}
+		else
+			res.json({QUESTION:questions});
+	});
+});
 
 router.get('/qid',function(req,res,next){
 	questions.fetchbyqid(req.query.q_id,function(err,questions){

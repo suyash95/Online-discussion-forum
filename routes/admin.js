@@ -5,6 +5,7 @@ var crypto = require('crypto');
 var users = require('../models/users');
 var jwt = require('jsonwebtoken');
 
+
 router.get('/userdetails',function(req,res,next){
 users.listuser(function(err,users){
     if(err)

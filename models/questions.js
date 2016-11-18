@@ -47,6 +47,40 @@ function fetchquestions(param,cb)
 });
 }
 
+function popular(cb)
+{
+	var query="select * from questions ORDER BY questions . upvote DESC";
+	connection.query(query,function(err,rows){
+		if(err){
+			console.log(err);
+			cb(err,null);
+		}
+		else{
+			var question_list = [];
+			i=0;
+			while(i<rows.length ){
+                var details={
+                	id :rows[i].id,
+                    u_id:rows[i].u_id,
+                    tag_id:rows[i].tag_id,
+                    content:rows[i].content,
+                    upvote:rows[i].upvote,
+                    downvote:rows[i].downvote,
+                    col_id:rows[i].col_id,
+                    username:rows[i].username,
+					tag: rows[i].tag,
+					is_answrd: rows[i].is_answrd,
+					pdate: rows[i].pdate
+                };
+
+				question_list.push(details);
+				i++;
+		}
+		cb(null,_.uniq(question_list));
+	}
+});
+}
+
 function fetchbyqid(param,cb)
 {
 	console.log(param);
@@ -321,5 +355,6 @@ module.exports={
 	fetchbyqid:fetchbyqid,
 	edit:edit,
 	upvote:upvote,
-	downvote:downvote
+	downvote:downvote,
+	popular:popular
 }
