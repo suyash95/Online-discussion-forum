@@ -40,6 +40,7 @@
                             <a href="" ng-click = "question.update_up(ans.id)" ><i class="fa fa-chevron-circle-up" aria-hidden="true"></i></a> {{ans.upvote}}
                         </span>|
                         <span class="ans-down">
+
                             <a href="" ng-click = "question.update_dw(ans.id)"  ><i class="fa fa-chevron-circle-down" aria-hidden="true"></i></a> {{ans.downvote}}
                             </span>
             <div class="ques-info">
