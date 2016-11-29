@@ -42,7 +42,7 @@
                         <span class="ans-down">
 
                             <a href="" ng-click = "question.update_dw(ans.id)"  ><i class="fa fa-chevron-circle-down" aria-hidden="true"></i></a> {{ans.downvote}}
-                            </span>
+                              </span>
             <div class="ques-info">
                         <span class="ques-user">
                             <i class="fa fa-user-o" aria-hidden="true"></i> {{ans.username}}
