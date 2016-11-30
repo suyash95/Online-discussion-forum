@@ -129,8 +129,14 @@ input[type="file"]:focus{
     .comment-box{
 ======*/
 	.post-comment{
-		background: #ccc;
+		background: #5a5555;
 		padding: 10px;
+	}
+	.comment-outer{
+		margin-bottom: 10px;
+	}
+	.comment-box{
+		width: 100%;
 	}
 	.sub-comment{
 		background: #ef6363;
@@ -174,3 +180,27 @@ input[type="file"]:focus{
 	.comment-box:-moz-placeholder { /* Firefox 18- */
 	  color: #ccc;
 	}
+
+/*post answer in ng-controller = "QuestionController as question"*/
+.post-comment{
+	margin-top: 20px;
+}
+.post-answer{
+	margin-top: 10px;
+}
+
+/*question user*/
+.user-comm{
+	font-weight: bold;
+	font-size: 19px;
+}
+
+/*comment icon*/
+.fa-comment-o{
+	font-size: 18px !important;
+}
+/*view all comments*/
+.other-comments{
+	margin-top: 10px;
+	margin-bottom: 10px;
+}

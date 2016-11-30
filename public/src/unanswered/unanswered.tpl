@@ -1,7 +1,7 @@
 <div ng-controller="UnansweredController as unanswered">
-    <div class="row row-offcanvas row-offcanvas-right">
+    <!-- <div class="row row-offcanvas row-offcanvas-right"> -->
         <div class="row">
-            <div class="col-lg-7 col-md-7 col-sm-9 col-xs-12 main col-lg-offset-2 col-md-offset-2 col-sm-offset-3">
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 main">
 
                 <section ng-repeat = "ques in unanswered.queslist" ng-if="!ques.is_answrd">
 
@@ -14,7 +14,7 @@
                             <i class="fa fa-user-o" aria-hidden="true"></i> {{ques.username}}
                         </span>
                         <span class="ques-date">
-                            <span class="glyphicon glyphicon-time" aria-hidden="true"></span> {{ques.pdate}}
+                            <i class="fa fa-clock-o" aria-hidden="true"></i> {{ques.pdate}}
                         </span>
                     </div>
 
@@ -54,7 +54,7 @@
 
                         <!--<span class="ans-comment"><a role="button" data-toggle="collapse" href="#write-comment" aria-expanded="false" aria-controls="write-comment"><i class="fa fa-comment-o" aria-hidden="true"></i> Comment</a></span>-->
 
-                        <span class="ans-report"><a href="" data-toggle="tooltip" data-placement="top" title="Ban this Quesion"><i class="fa fa-ban" aria-hidden="true"></i> Report</a></span>
+                        <!-- <span class="ans-report"><a href="" data-toggle="tooltip" data-placement="top" title="Ban this Quesion"><i class="fa fa-ban" aria-hidden="true"></i> Report</a></span> -->
                     </div>
 
                     <!-- tags related to the question -->
@@ -62,12 +62,12 @@
                         <span class="tag-links" ui-sref = "listed({tag_id:ques.tag_id})">{{ques.tag}}</span>
                     </div>
                 </section>
-            </div>
+           <!--  </div> -->
         </div>
     </div>
 
 
-    <div class="col-xs-6 col-sm-3 sidebar-offcanvas" id="sidebar">
+    <!-- <div class="col-xs-6 col-sm-3 sidebar-offcanvas" id="sidebar">
 
-    </div>
+    </div> -->
 </div>
