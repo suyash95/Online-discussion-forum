@@ -12,10 +12,12 @@
     <link rel="stylesheet" type="text/css" href="external/bootstrap/bootstrap.css">
     <link rel="stylesheet" type="text/css" href="external/signup-login/bootsign.css">
     <link rel="stylesheet" type="text/css" href="external/signup-login/modal.css">
-    <link rel="stylesheet" type="text/css" href="external/custom-css/css/header.css">
+
+    <link rel="stylesheet" type="text/css" href="external/new/headernew.css">
+    <link rel="stylesheet" type="text/css" href="external/new/mainnew.css">
+    <link rel="stylesheet" type="text/css" href="external/new/left-sidebarnew.css">
+
     <link rel="stylesheet" type="text/css" href="external/custom-css/css/footer.css">
-    <link rel="stylesheet" type="text/css" href="external/custom-css/css/main.css">
-    <link rel="stylesheet" type="text/css" href="external/custom-css/css/left-sidebar.css">
     <link rel="stylesheet" type="text/css" href="external/custom-css/css/right-sidebar.css">
     <!--<link rel="stylesheet" type="text/css" href="external/custom-css/css/comment.css">-->
 
@@ -33,10 +35,35 @@
    
     <script type = "text/javascript">
          $(document).ready(function() {
-            $(".dropdown-icon-sm button").click(function () {
-               $(".sub-items").toggleClass("is-visible");
+            $("#drop-btn").click(function () {
+               $(".nav-items").toggleClass("is-visible");
             });
          });
+
+         $(document).ready(function() {
+            $(".tag-btn").click(function () {
+                $(".left-sidebar").toggleClass("is-visible-left-sidebar");
+              /*  $(".nav-items").toggleClass("is-visible");*/
+            });
+         });
+
+         $(document).ready(function() {
+            $(".nav-items > a").click(function () {
+                $(".nav-items").toggleClass("is-visible");
+            });
+         });
+
+        $(document).ready(function() {
+            $(".close-tag").click(function () {
+                $(".left-sidebar").toggleClass("is-visible-left-sidebar");
+            });
+        });
+
+        $(document).ready(function() {
+            $(".tags li").click(function () {
+                $(".left-sidebar").toggleClass("is-visible-left-sidebar");
+            });
+        });
     </script>
 
     <!-- angluar -->
@@ -49,44 +76,46 @@
   <body ng-app="miniRvce" >
 
     <!-- top navigation bar -->
-    <nav class="navbar navbar-default navbar-fixed-top">
-        <div ng-controller= "AccountController as account" class="container-fluid header-items">
-            <ul class="nav navbar-nav  fixed-sm">
-                <li class="website-name"><a href="#" class="logo">RV-QA</a></li>
-                <li class="pull-right hidden-sm hidden-md hidden-lg dropdown-icon-sm"><button class="btn-box"><span class="glyphicon glyphicon-option-vertical" aria-hidden="true"></span></button></li>
-            </ul>
-            
-            <ul class="nav navbar-nav sub-items dropdown-content-sm">
-                <li class="inline-block"><a ui-sref="addques" class="nav-items">Post Question</a></li>
-                <li class="inline-block hidden-sm hidden-md hidden-lg"><a href="#" class="nav-items">Tags</a></li>
-                <li class="inline-block"><a ui-sref ="unanswered" class="nav-items">Unanswered<!--<span class="numb"></span>--></a></li>
-                <li class="inline-block"><a href="#" class="nav-items">Popular</a></li> 
-                <li ng-if="!loggedIn" class="inline-block"><a ui-sref="account.signup" class="nav-items">Sign Up</a></li>
-                <li ng-if="!loggedIn" class="inline-block"><a ui-sref="account.login"  class="active nav-items">Login</a></li>
-                <li ng-if="loggedIn" class="inline-block"><a ng-click="account.logout()" ui-sref-active="ak-active-tab" ui-sref="account.logout" class="active nav-items">Logout</a></li>
-            </ul>
+    <header>
+        <div ng-controller= "AccountController as account" class="navbar-top-fixed">
+            <div id="logo">
+                <a href="#">RV<span>Que-Ans</span></a>
+            </div>
+            <div class="nav-items">
+                <a ui-sref="addques">Post Question</a>
+                <a href="javascript:void(0)" class="hidden-lg hidden-md hidden-sm tag-btn">Tags</a>
+                <a ui-sref ="unanswered">Unanswered <span class="unans-no">41</span></a>
+                <a href="">Popular</a>
+                <a ng-if="!loggedIn" ui-sref="account.signup">Sign Up</a>
+                <a ng-if="!loggedIn" ui-sref="account.login">Login</a>
+                <a ng-if="loggedIn" ng-click="account.logout()" ui-sref-active="ak-active-tab" ui-sref="account.logout">Logout</a>
+            </div>
+            <div id="drop-btn" class="hidden-lg hidden-md hidden-sm">
+                <i class="fa fa-ellipsis-v" aria-hidden="true"></i>
+            </div>
         </div>
-    </nav>
+    </header>
 
-    <!-- main body below the fixed navigation bar -->
 
     <div class="container-fluid">
         <!-- row STARTS -->   
         <div class="row">
 
           <!-- 1st column STARTS/TAGS -->
-          <div ng-controller = "TagController as tag" class="col-lg-2 col-md-2 col-sm-3 left-sidebar hidden-xs">
+          <div ng-controller = "TagController as tag" class="col-lg-2 col-md-3 col-sm-3 left-sidebar">
+            <a href="javascript:void(0)" class="hidden-lg hidden-md hidden-sm visible-xs close-tag"><i class="fa fa-arrow-circle-left" aria-hidden="true"></i></a>
             <h5>SELECT <span>TAGS</span></h5>
               <ul class="tags">
-                  <!-- dynamic tags generated -->
-                  <li><a ng-repeat="each in tag.tagsList" class="tags-sub" value="{{each.id}}" ui-sref = "listed({tag_id: each.id})" >{{each.name}} <span class="numb">{{each.assoc}}</span> </a></li>
+                  <!-- tags generated -->
+                  <li><a ng-repeat="each in tag.tagsList" value="{{each.id}}" ui-sref = "listed({tag_id: each.id})"><span>{{each.name}}</span><span class="numb">{{each.assoc}}</span> </a></li>
               </ul>
               <a href="" id="request-tags">Request TAGS</a>
           </div><!-- 1st column ENDS -->
 
 
+
           <!-- 2nd column START/ Main STARTS/dynamic content generated here -->
-          <div class="col-lg-7 col-md-7 col-sm-9 col-xs-12 main col-lg-offset-2 col-md-offset-2 col-sm-offset-3">
+          <div class="col-lg-7 col-md-6 col-sm-9 col-xs-12 main">
 
             <!-- dynamic content generated -->
             <ui-view></ui-view>
@@ -132,10 +161,17 @@
                     <h5>POPULAR Posts</h5>
                     <ul class="right-sidebar">
                         <li>
-                            <a href="">In February 2006, she performed in Neil Simon's Broadway production of Barefoot in the Park.</a>
+                            <a href="">Which routine is being followed this saturday</a>
                             <!-- <div><span class="user-name">Sumit</span><span class="time">10 Sep 12:21 AM </span></div> -->
                         </li>
-                        
+                        <li>
+                            <a href="">Are the dates for the external examinations out</a>
+                            <!-- <div><span class="user-name">Sumit</span><span class="time">10 Sep 12:21 AM </span></div> -->
+                        </li>
+                        <li>
+                            <a href="">Is it true that the semester end examination has been postponed</a>
+                            <!-- <div><span class="user-name">Sumit</span><span class="time">10 Sep 12:21 AM </span></div> -->
+                        </li>
                     </ul>
                 </aside>
 
@@ -144,7 +180,15 @@
                     <h5>RECENT News</h5>
                     <ul class="right-sidebar">
                         <li>
-                            <a href="">In February 2006, she performed in Neil Simon's Broadway production of Barefoot in the Park.</a>
+                            <a href="">Tomorrow is holiday due to Bharat Bandh</a>
+                            <!-- <div><span class="user-name">Sumit</span><span class="time">10 Sep 12:21 AM </span></div> -->
+                        </li>
+                        <li>
+                            <a href="">Collect examination form from the examination section immediately</a>
+                            <!-- <div><span class="user-name">Sumit</span><span class="time">10 Sep 12:21 AM </span></div> -->
+                        </li>
+                        <li>
+                            <a href="">Return Library Books before the exam ends otherwise fine will be imposed</a>
                             <!-- <div><span class="user-name">Sumit</span><span class="time">10 Sep 12:21 AM </span></div> -->
                         </li>
                     </ul>
