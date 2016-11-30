@@ -4,14 +4,17 @@
     angular.module('miniRvce')
         .controller('HomeController', function($state,$http, Home, $window, $stateParams,$rootScope,Question,Comment) {
 
+            var z = null;
             var self = this;
             self.tagsList = [];
             self.queslist = [];
+            var gvar = [];
             $rootScope.verifiedAcc = $window.localStorage.getItem('vfd');
             var ansL = null;
             var getTopAns = function(a){
                 var k = Question.getAnswers(a)
                     .then(function(response){
+                        //console.log(response);
                         return response.data.ANSWERS[0];
                     })
                     .catch(function(reason){
@@ -22,9 +25,9 @@
             var getTopComm = function(a){
               var co = Comment.getComments(a)
                   .then(function (response){
-                      return response.data.COMMENTS[3];
+                      return response.data.COMMENTS;
                   }).catch(function(reason){
-                      return null;
+                      return reason;
                   });
                 return co;
             };
@@ -33,28 +36,67 @@
                     .then(function (response) {
                         //console.log(response);
                         self.queslist = response.data.QUESTION;
-                        for(var i = 0;i<self.queslist.length; i++ ){
-                            ansL = getTopAns(self.queslist[i].id);
-                            //console.log(ansL);
-                            self.queslist[i].topAns =  ansL;
-                            var zz = ansL.$$state;
-                            //while(!zz.value);
-                            if(zz.value) {
-                                console.log(ansL.$$state);
-                                 var comL = getTopComm(zz.value.id);
-                                    self.queslist[i].topAns.topCom = comL;
 
-                            }
-
-
-                            console.log("jjj",i,self.queslist[i].topAns);
+                        for(var i = 0;i<self.queslist.length; i++ ) {
+                            //self.queslist[i].topAns =[];
+                            self.queslist[i].topAns = getTopAns(self.queslist[i].id)
+                                .then(function(response){
+                                    console.log("getTopAns: ", response);
+                                    return response;
+                                    //console.log("kskskksk",self.queslist[i].topAns);
+                                    /*getTopComm(self.queslist[i].topAns.id)
+                                        .then(function (response1) {
+                                            console.log("getTopCom", response1);
+                                            self.queslist[i].topAns.topCom = response1;
+                                        }).catch(function (reason ){
+                                            console.log("reason: ",reason);
+                                        })*/
+                                }).catch(function (reason){
+                                    console.log(reason);
+                                });
                         }
-                        //console.log(self.queslist);
-                    }).catch(function (reason) {
-                        console.log('error:', reason);
-                    });
+  //                      console.log(self.queslist[0].topAns);
+/*                        for(var i = 0;i<self.queslist.length; i++ ) {
+
+                            self.queslist[i].topAns.topCom = getTopComm(self.queslist[i].topAns.$$state.value.id)
+                                .then(function (response) {
+                                    return response;
+                                }).catch(function (reason) {
+                                    console.log(reason);
+                                });
+                        }*/
+                        }).catch(function (reason) {
+                            console.log('error:', reason);
+                        });
+                return 1;
+
             };
-            self.getall();
+            self.getCom = function () {
+                for(var i = 0;i<self.queslist.length; i++ ) {
+                    console.log("aaaa");
+                    self.queslist[i].topAns.topCom = getTopComm(self.queslist[i].topAns.$$state.value.id)
+                        .then(function (response)
+                        {
+                            console.log(response);
+                            return response;
+                        }).catch(function (reason) {
+                            console.log(reason);
+                        });
+                }
+            };
+
+            self.sequence = function () {
+
+                return self.getall();
+                self.getCom();
+
+            };
+            self.sequence();
+
+
+
+
+
             self.update_up = function (id){
               Home.upd_up(id)
                   .then(function(response){
