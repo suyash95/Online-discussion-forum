@@ -1,4 +1,4 @@
-<div class="col-lg-7 col-md-7 col-sm-9 col-xs-12 main col-lg-offset-2 col-md-offset-2 col-sm-offset-3" ng-controller = "QuestionController as question">
+<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 main" ng-controller = "QuestionController as question">
     <!-- question -->
     <h2 class="ques">
         {{question.allData[0].content}}
@@ -9,11 +9,18 @@
     <div class="ques-info">
                         <span class="ques-user">
                             <i class="fa fa-user-o" aria-hidden="true"></i> {{question.allData[0].username}}
-                        </span
+                        </span>
                         <span class="ques-date">
-                            <span class="glyphicon glyphicon-time" aria-hidden="true"></span> {{question.allData[0].pdate}}
+                            <i class="fa fa-clock-o" aria-hidden="true"></i> {{question.allData[0].pdate}}
                         </span>
     </div>
+
+    <form class="post-comment post-answer">
+        <div class="comment-outer">
+            <input type="text" class="inp-comment comment-box" placeholder="Enter Answer" ng-model = "question.new_answer">
+        </div>
+        <button type="submit" class="sub-comment" ng-click="question.addAnswer()">Submit</button>
+    </form>
 
     <!-- tags related to question -->
     <div class="tags-info">
@@ -27,6 +34,9 @@
         <!-- answer -->
         <div class="ans">
             <p>
+            <span class="ques-user user-comm">
+                    {{ans.username}}
+            </span> &nbsp;&nbsp;
                 {{ans.content}}
 
             </p>
@@ -42,13 +52,14 @@
                         <span class="ans-down">
 
                             <a href="" ng-click = "question.update_dw(ans.id)"  ><i class="fa fa-chevron-circle-down" aria-hidden="true"></i></a> {{ans.downvote}}
-                              </span>
-            <div class="ques-info">
+                        </span>
+
+            <!-- <div class="ques-info">
                         <span class="ques-user">
                             <i class="fa fa-user-o" aria-hidden="true"></i> {{ans.username}}
-                        </span
+                        </span>
 
-            </div>
+            </div> -->
 
 
 
@@ -56,7 +67,7 @@
 -->
             <!--<span class="ans-comment"><a role="button" data-toggle="collapse" href="#write-comment" aria-expanded="false" aria-controls="write-comment"><i class="fa fa-comment-o" aria-hidden="true"></i> Comment</a></span>-->
 
-            <span class="ans-report"><a href="" data-toggle="tooltip" data-placement="top" title="Ban this Quesion"><i class="fa fa-ban" aria-hidden="true"></i> Report</a></span>
+            <!-- <span class="ans-report"><a href="" data-toggle="tooltip" data-placement="top" title="Ban this Quesion"><i class="fa fa-ban" aria-hidden="true"></i> Report</a></span> -->
         </div>
 
         <!-- comments related to this answer -->
@@ -90,10 +101,5 @@
     </section>
 
 
-    <form class="post-comment">
-        <div class="comment-outer">
-            <input type="text" class="inp-comment comment-box" placeholder="Enter Answer" ng-model = "question.new_answer">
-        </div>
-        <button type="submit" class="sub-comment" ng-click="question.addAnswer()">Submit</button>
-    </form>
+    
 </div>
