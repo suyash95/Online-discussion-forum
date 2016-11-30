@@ -2,7 +2,7 @@
   <div class="vertical-align-center">
 
     <!-- outer box -->
-    <div ng-controller="SignUpController as signup" class="gradient col-lg-12 col-md-8 col-sm-12 col-xs-12 col-lg-offset-0 col-md-offset-2 col-sm-offset-0  col-xs-offset-0">
+    <div ng-controller="SignUpController as signup" class="gradient col-lg-8 col-md-10 col-sm-8 col-xs-12 col-lg-offset-2 col-md-offset-1  col-sm-offset-2  col-xs-offset-0">
 
 
       <div class="col-lg-8 col-md-10 col-sm-10 col-xs-10 col-lg-offset-2 col-md-offset-1 col-sm-offset-1 col-xs-offset-1">
@@ -26,7 +26,7 @@
 
           <!--Phone-->
           <div class="form-group">
-            <input data-ng-model="signup.phone" type="number" class="form-control" id="inputPhone" placeholder="Mobile No.">
+            <input data-ng-model="signup.phone" type="phone" pattern="[789][0-9]{9}" class="form-control" id="inputPhone" placeholder="Mobile No.">
           </div>
 
           <!--Usn/id-->
