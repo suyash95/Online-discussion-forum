@@ -93,7 +93,14 @@
             };
             self.sequence();
 
-
+            self.popQues = [];
+            Home.getPopularQues()
+                .then(function (response) {
+                    console.log("aaaaaaaaaaaa",response);
+                    self.popQues = response.data.QUESTION;
+                }).catch( function (reason) {
+                   console.log("popular fetch error: ", reason);
+                });
 
 
 

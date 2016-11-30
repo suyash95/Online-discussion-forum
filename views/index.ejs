@@ -128,11 +128,11 @@
             <div class="col-lg-3 col-md-3 hidden-sm hidden-xs right">
 
                 <!-- popular post preferablly 5 posts -->
-                <aside id="popular-post">
+                <aside id="popular-post" ng-controller="HomeController as home">
                     <h5>POPULAR Posts</h5>
                     <ul class="right-sidebar">
-                        <li>
-                            <a href="">In February 2006, she performed in Neil Simon's Broadway production of Barefoot in the Park.</a>
+                        <li ng-repeat="ques in home.popQues | limitTo: 5">
+                            <a ui-sref = "question({ques_id: ques.id})">{{ques.content}}</a>
                             <!-- <div><span class="user-name">Sumit</span><span class="time">10 Sep 12:21 AM </span></div> -->
                         </li>
                         

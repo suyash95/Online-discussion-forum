@@ -15,6 +15,9 @@
                 },
                 upd_dw: function(id) {
                     return $http.post('/question/dw',{q_id : id});
+                },
+                getPopularQues: function () {
+                    return $http.get('/question/popular');
                 }
 
             };
