@@ -84,7 +84,7 @@
             <div class="nav-items">
                 <a ui-sref="addques">Post Question</a>
                 <a href="javascript:void(0)" class="hidden-lg hidden-md hidden-sm tag-btn">Tags</a>
-                <a ui-sref ="unanswered">Unanswered <span class="unans-no">41</span></a>
+                <a ui-sref ="unanswered">Unanswered <!--<span class="unans-no">41</span>--></a>
                 <a href="">Popular</a>
                 <a ng-if="!loggedIn" ui-sref="account.signup">Sign Up</a>
                 <a ng-if="!loggedIn" ui-sref="account.login">Login</a>
@@ -157,21 +157,21 @@
             <div class="col-lg-3 col-md-3 hidden-sm hidden-xs right">
 
                 <!-- popular post preferablly 5 posts -->
-                <aside id="popular-post">
+                <aside id="popular-post" ng-controller = "HomeController as home">
                     <h5>POPULAR Posts</h5>
                     <ul class="right-sidebar">
-                        <li>
-                            <a href="">Which routine is being followed this saturday</a>
+                        <li ng-repeat = "ques in home.popQues | limitTo : 5 ">
+                            <a ui-sref = "question({ques_id: ques.id})">{{ques.content}}</a>
                             <!-- <div><span class="user-name">Sumit</span><span class="time">10 Sep 12:21 AM </span></div> -->
                         </li>
-                        <li>
+                        <!--<li>
                             <a href="">Are the dates for the external examinations out</a>
-                            <!-- <div><span class="user-name">Sumit</span><span class="time">10 Sep 12:21 AM </span></div> -->
+                            &lt;!&ndash; <div><span class="user-name">Sumit</span><span class="time">10 Sep 12:21 AM </span></div> &ndash;&gt;
                         </li>
                         <li>
                             <a href="">Is it true that the semester end examination has been postponed</a>
-                            <!-- <div><span class="user-name">Sumit</span><span class="time">10 Sep 12:21 AM </span></div> -->
-                        </li>
+                            &lt;!&ndash; <div><span class="user-name">Sumit</span><span class="time">10 Sep 12:21 AM </span></div> &ndash;&gt;
+                        </li>-->
                     </ul>
                 </aside>
 
